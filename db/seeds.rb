@@ -27,8 +27,9 @@ suppliers = []
 end
 
 # Create products
+products = []
 10.times do
-  Product.create!(
+  products << Product.create!(
     name: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
     sku: Faker::Alphanumeric.alphanumeric(number: 10, min_alpha: 3),
@@ -41,8 +42,9 @@ end
 end
 
 # Create customers
+customers = []
 10.times do
-  Customer.create!(
+  customers << Customer.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
