@@ -1,0 +1,12 @@
+{
+  "name": "feed_town",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "David Ames <dames@acivilate.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@hotwired/turbo-rails": "^8.0.5",
+    "chart.js": "^4.4.3",
+    "chartkick": "^5.0.1"
+  }
+}
