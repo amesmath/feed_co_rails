@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_184807) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_27_193849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_184807) do
     t.boolean "isCustomer", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "isInternal"
   end
 
   create_table "feedbacks", force: :cascade do |t|
