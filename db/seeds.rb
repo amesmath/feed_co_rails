@@ -41,10 +41,10 @@ products = []
   )
 end
 
-# Create customers
-customers = []
+# Create companies
+companies = []
 10.times do
-  customers << Customer.create!(
+  companies << Company.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -66,6 +66,7 @@ users = []
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
+    password: '1234ABCDE',
     password_digest: BCrypt::Password.create('password'),
     role: %w[admin user].sample,
     status: 'active',
@@ -79,7 +80,7 @@ end
 sales = []
 20.times do
   sales << Sale.create!(
-    customer: customers.sample,
+    company: companies.sample,
     total_amount: Faker::Commerce.price(range: 50..1000),
     sale_date: Faker::Date.between(from: 1.year.ago, to: Time.zone.today),
     status: %w[completed pending cancelled].sample
@@ -162,7 +163,7 @@ end
 # Create feedbacks
 20.times do
   Feedback.create!(
-    customer: customers.sample,
+    company: companies.sample,
     product: products.sample,
     rating: Faker::Number.between(from: 1, to: 5),
     comment: Faker::Lorem.paragraph

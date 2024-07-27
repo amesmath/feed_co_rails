@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_181929) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_27_145042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,20 +33,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_181929) do
     t.string "state"
     t.string "postal_code"
     t.string "country"
+    t.boolean "isSupplier", default: false, null: false
+    t.boolean "isCustomer", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "isSupplier"
-    t.boolean "isCustomer"
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.bigint "customer_id", null: false
+    t.bigint "company_id", null: false
     t.bigint "product_id", null: false
     t.integer "rating"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_feedbacks_on_customer_id"
+    t.index ["company_id"], name: "index_feedbacks_on_company_id"
     t.index ["product_id"], name: "index_feedbacks_on_product_id"
   end
 
@@ -99,7 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_181929) do
     t.text "description"
     t.string "sku"
     t.bigint "category_id", null: false
-    t.bigint "supplier_id", null: false
+    t.bigint "company_id", null: false
     t.decimal "price"
     t.decimal "cost"
     t.integer "stock_quantity"
@@ -108,8 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_181929) do
     t.integer "sales_count"
     t.datetime "last_sale_date"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["sku"], name: "index_products_on_sku", unique: true
-    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "promotions", force: :cascade do |t|
@@ -133,13 +133,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_181929) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.bigint "customer_id", null: false
+    t.bigint "company_id", null: false
     t.decimal "total_amount"
     t.datetime "sale_date"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_sales_on_customer_id"
+    t.index ["company_id"], name: "index_sales_on_company_id"
   end
 
   create_table "sales_details", force: :cascade do |t|
@@ -186,21 +186,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_181929) do
     t.index ["region_id"], name: "index_stores_on_region_id"
   end
 
-  create_table "suppliers", force: :cascade do |t|
-    t.string "name"
-    t.string "contact_name"
-    t.string "contact_email"
-    t.string "contact_phone"
-    t.string "address_line1"
-    t.string "address_line2"
-    t.string "city"
-    t.string "state"
-    t.string "postal_code"
-    t.string "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -224,16 +209,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_181929) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "feedbacks", "companies", column: "customer_id"
+  add_foreign_key "feedbacks", "companies"
   add_foreign_key "feedbacks", "products"
   add_foreign_key "forecasts", "products"
   add_foreign_key "inventories", "products"
   add_foreign_key "merchandisings", "products"
   add_foreign_key "pricings", "products"
   add_foreign_key "products", "categories"
-  add_foreign_key "products", "suppliers"
+  add_foreign_key "products", "companies"
   add_foreign_key "promotions", "products"
-  add_foreign_key "sales", "companies", column: "customer_id"
+  add_foreign_key "sales", "companies"
   add_foreign_key "sales_details", "products"
   add_foreign_key "sales_details", "sales"
   add_foreign_key "sales_targets", "products"
