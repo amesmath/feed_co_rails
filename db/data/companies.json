@@ -1,5 +1,617 @@
 [
   {
+    "first_name": "John",
+    "last_name": "Williams",
+    "email": "john.williams@westernmilling.com",
+    "phone_number": "559-123-4567",
+    "company_name": "Western Milling Agribusiness",
+    "address_line1": "123 Agronomy St",
+    "address_line2": "",
+    "city": "Hanford",
+    "state": "CA",
+    "postal_code": "93230",
+    "country": "USA",
+    "isSupplier": false,
+    "isCustomer": false,
+    "isInternal": true,
+    "products": [
+      {
+        "name": "Complete Dairy Feed",
+        "description": "High-quality complete feed for dairy cows to ensure optimal milk production and health.",
+        "sku": "WM-DAIRY-001",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 25.5,
+        "cost": 15.0,
+        "stock_quantity": 1000,
+        "sales_count": 200,
+        "last_sale_date": "2024-06-15T00:00:00Z"
+      },
+      {
+        "name": "Broiler Starter Feed",
+        "description": "Nutrient-rich starter feed for broiler chickens to promote healthy growth.",
+        "sku": "WM-BROILER-002",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 18.75,
+        "cost": 10.5,
+        "stock_quantity": 500,
+        "sales_count": 150,
+        "last_sale_date": "2024-06-12T00:00:00Z"
+      },
+      {
+        "name": "Layer Pellet Feed",
+        "description": "Pelleted feed for layer hens to ensure maximum egg production and quality.",
+        "sku": "WM-LAYER-003",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 20.0,
+        "cost": 12.0,
+        "stock_quantity": 800,
+        "sales_count": 300,
+        "last_sale_date": "2024-06-10T00:00:00Z"
+      },
+      {
+        "name": "Hog Grower Feed",
+        "description": "Balanced feed for growing hogs to ensure healthy weight gain.",
+        "sku": "WM-HOG-004",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 22.0,
+        "cost": 14.0,
+        "stock_quantity": 700,
+        "sales_count": 180,
+        "last_sale_date": "2024-06-14T00:00:00Z"
+      },
+      {
+        "name": "Calf Starter Feed",
+        "description": "High-protein starter feed for calves to support early development and growth.",
+        "sku": "WM-CALF-005",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 24.0,
+        "cost": 16.0,
+        "stock_quantity": 600,
+        "sales_count": 220,
+        "last_sale_date": "2024-06-13T00:00:00Z"
+      },
+      {
+        "name": "Beef Cattle Feed",
+        "description": "Nutritious feed for beef cattle to promote healthy weight gain and muscle development.",
+        "sku": "WM-BEEF-006",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 26.0,
+        "cost": 17.0,
+        "stock_quantity": 900,
+        "sales_count": 250,
+        "last_sale_date": "2024-06-11T00:00:00Z"
+      },
+      {
+        "name": "Pelleted Sheep Feed",
+        "description": "Complete pelleted feed for sheep to ensure balanced nutrition and health.",
+        "sku": "WM-SHEEP-007",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 19.5,
+        "cost": 11.5,
+        "stock_quantity": 400,
+        "sales_count": 100,
+        "last_sale_date": "2024-06-16T00:00:00Z"
+      },
+      {
+        "name": "Goat Feed",
+        "description": "Balanced feed for goats to support overall health and milk production.",
+        "sku": "WM-GOAT-008",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 21.0,
+        "cost": 13.0,
+        "stock_quantity": 350,
+        "sales_count": 90,
+        "last_sale_date": "2024-06-17T00:00:00Z"
+      },
+      {
+        "name": "Horse Feed",
+        "description": "High-fiber feed for horses to ensure energy, health, and performance.",
+        "sku": "WM-HORSE-009",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 23.0,
+        "cost": 15.0,
+        "stock_quantity": 750,
+        "sales_count": 140,
+        "last_sale_date": "2024-06-18T00:00:00Z"
+      },
+      {
+        "name": "Rabbit Feed",
+        "description": "Nutrient-dense feed for rabbits to support growth, health, and reproduction.",
+        "sku": "WM-RABBIT-010",
+        "category_id": 1,
+        "company_id": 1,
+        "price": 17.0,
+        "cost": 10.0,
+        "stock_quantity": 300,
+        "sales_count": 110,
+        "last_sale_date": "2024-06-19T00:00:00Z"
+      }
+    ],
+    "services": [
+      {
+        "name": "Nutritional Consulting",
+        "description": "Expert consulting services to help optimize the nutritional plans for livestock.",
+        "price": 100.0
+      },
+      {
+        "name": "Fertilizer Application",
+        "description": "Professional application of fertilizers to ensure maximum crop yield.",
+        "price": 150.0
+      },
+      {
+        "name": "Soil Testing",
+        "description": "Comprehensive soil testing services to determine nutrient needs and improve crop performance.",
+        "price": 50.0
+      }
+    ]
+  },
+  {
+    "first_name": "Samantha",
+    "last_name": "Beckwith",
+    "email": "sam.beckwith@ohkruse.com",
+    "phone_number": "559-234-5678",
+    "company_name": "OH Kruse Grain and Milling",
+    "address_line1": "456 Feed Ln",
+    "address_line2": "",
+    "city": "Visalia",
+    "state": "CA",
+    "postal_code": "93291",
+    "country": "USA",
+    "isSupplier": false,
+    "isCustomer": false,
+    "isInternal": true,
+    "products": [
+      {
+        "name": "Premium Horse Feed",
+        "description": "High-fiber feed specially formulated for horses to ensure peak performance and health.",
+        "sku": "OHK-HORSE-001",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 27.0,
+        "cost": 18.0,
+        "stock_quantity": 800,
+        "sales_count": 120,
+        "last_sale_date": "2024-06-10T00:00:00Z"
+      },
+      {
+        "name": "Poultry Starter Feed",
+        "description": "Nutrient-rich starter feed for poultry to support rapid and healthy growth.",
+        "sku": "OHK-POULTRY-002",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 19.0,
+        "cost": 11.5,
+        "stock_quantity": 600,
+        "sales_count": 180,
+        "last_sale_date": "2024-06-11T00:00:00Z"
+      },
+      {
+        "name": "Rabbit Pellets",
+        "description": "Complete pelleted feed for rabbits to promote overall health and growth.",
+        "sku": "OHK-RABBIT-003",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 16.0,
+        "cost": 9.5,
+        "stock_quantity": 400,
+        "sales_count": 140,
+        "last_sale_date": "2024-06-12T00:00:00Z"
+      },
+      {
+        "name": "Organic Layer Feed",
+        "description": "Certified organic feed for layer hens to ensure high-quality egg production.",
+        "sku": "OHK-LAYER-004",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 22.5,
+        "cost": 14.0,
+        "stock_quantity": 500,
+        "sales_count": 160,
+        "last_sale_date": "2024-06-13T00:00:00Z"
+      },
+      {
+        "name": "All-Purpose Goat Feed",
+        "description": "Balanced feed for goats to support health and milk production.",
+        "sku": "OHK-GOAT-005",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 20.0,
+        "cost": 12.5,
+        "stock_quantity": 350,
+        "sales_count": 90,
+        "last_sale_date": "2024-06-14T00:00:00Z"
+      },
+      {
+        "name": "Sheep Pellets",
+        "description": "Nutritious pelleted feed for sheep to ensure balanced growth and health.",
+        "sku": "OHK-SHEEP-006",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 18.0,
+        "cost": 10.5,
+        "stock_quantity": 450,
+        "sales_count": 110,
+        "last_sale_date": "2024-06-15T00:00:00Z"
+      },
+      {
+        "name": "Swine Grower Feed",
+        "description": "Complete feed for growing swine to promote healthy weight gain.",
+        "sku": "OHK-SWINE-007",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 21.0,
+        "cost": 13.0,
+        "stock_quantity": 300,
+        "sales_count": 70,
+        "last_sale_date": "2024-06-16T00:00:00Z"
+      },
+      {
+        "name": "Alpaca Feed",
+        "description": "Specialized feed for alpacas to support overall health and fiber production.",
+        "sku": "OHK-ALPACA-008",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 24.0,
+        "cost": 15.0,
+        "stock_quantity": 200,
+        "sales_count": 60,
+        "last_sale_date": "2024-06-17T00:00:00Z"
+      },
+      {
+        "name": "Dog Maintenance Diet",
+        "description": "Balanced diet for adult dogs to maintain optimal health and energy.",
+        "sku": "OHK-DOG-009",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 30.0,
+        "cost": 20.0,
+        "stock_quantity": 750,
+        "sales_count": 250,
+        "last_sale_date": "2024-06-18T00:00:00Z"
+      },
+      {
+        "name": "Cat Premium Diet",
+        "description": "Premium diet for cats to ensure health and vitality.",
+        "sku": "OHK-CAT-010",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 28.0,
+        "cost": 18.0,
+        "stock_quantity": 500,
+        "sales_count": 200,
+        "last_sale_date": "2024-06-19T00:00:00Z"
+      },
+      {
+        "name": "Parrot Maintenance Feed",
+        "description": "Nutritionally complete feed for parrots to maintain their health.",
+        "sku": "OHK-PARROT-011",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 26.0,
+        "cost": 16.0,
+        "stock_quantity": 300,
+        "sales_count": 90,
+        "last_sale_date": "2024-06-20T00:00:00Z"
+      },
+      {
+        "name": "Hamster Food",
+        "description": "Balanced feed for hamsters to support their health and activity.",
+        "sku": "OHK-HAMSTER-012",
+        "category_id": 1,
+        "company_id": 2,
+        "price": 15.0,
+        "cost": 9.0,
+        "stock_quantity": 400,
+        "sales_count": 130,
+        "last_sale_date": "2024-06-21T00:00:00Z"
+      }
+    ],
+    "services": [
+      {
+        "name": "Feed Formulation Consulting",
+        "description": "Expert consulting to create custom feed formulations for optimal animal health.",
+        "price": 120.0
+      },
+      {
+        "name": "Quality Control Testing",
+        "description": "Comprehensive testing services to ensure feed quality and safety.",
+        "price": 80.0
+      }
+    ]
+  },
+  {
+    "first_name": "Mike",
+    "last_name": "Burgess",
+    "email": "mike.burgess@westernmilling.com",
+    "phone_number": "555-345-6789",
+    "company_name": "Western Milling Fertilizer Operations",
+    "address_line1": "789 Fertilizer Blvd",
+    "address_line2": "",
+    "city": "Famoso",
+    "state": "CA",
+    "postal_code": "93268",
+    "country": "USA",
+    "isSupplier": false,
+    "isCustomer": false,
+    "isInternal": true,
+    "products": [
+      {
+        "name": "Nitrogen Fertilizer",
+        "description": "High-efficiency nitrogen fertilizer to promote robust plant growth.",
+        "sku": "WMF-NITRO-001",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 45.0,
+        "cost": 30.0,
+        "stock_quantity": 1000,
+        "sales_count": 200,
+        "last_sale_date": "2024-06-15T00:00:00Z"
+      },
+      {
+        "name": "Phosphorus Fertilizer",
+        "description": "Essential phosphorus fertilizer to support root development and flowering.",
+        "sku": "WMF-PHOS-002",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 50.0,
+        "cost": 35.0,
+        "stock_quantity": 800,
+        "sales_count": 150,
+        "last_sale_date": "2024-06-12T00:00:00Z"
+      },
+      {
+        "name": "Potassium Fertilizer",
+        "description": "Potassium-rich fertilizer to enhance plant vigor and disease resistance.",
+        "sku": "WMF-POTASH-003",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 48.0,
+        "cost": 32.0,
+        "stock_quantity": 900,
+        "sales_count": 180,
+        "last_sale_date": "2024-06-13T00:00:00Z"
+      },
+      {
+        "name": "Calcium Nitrate",
+        "description": "Calcium nitrate fertilizer to improve cell wall strength and quality of crops.",
+        "sku": "WMF-CALCIUM-004",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 55.0,
+        "cost": 37.0,
+        "stock_quantity": 700,
+        "sales_count": 160,
+        "last_sale_date": "2024-06-14T00:00:00Z"
+      },
+      {
+        "name": "Magnesium Sulfate",
+        "description": "Magnesium sulfate to aid in photosynthesis and plant nutrient absorption.",
+        "sku": "WMF-MAG-005",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 40.0,
+        "cost": 28.0,
+        "stock_quantity": 600,
+        "sales_count": 140,
+        "last_sale_date": "2024-06-16T00:00:00Z"
+      },
+      {
+        "name": "Sulfur Fertilizer",
+        "description": "Sulfur fertilizer to enhance enzyme activity and protein synthesis in plants.",
+        "sku": "WMF-SULFUR-006",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 35.0,
+        "cost": 25.0,
+        "stock_quantity": 800,
+        "sales_count": 130,
+        "last_sale_date": "2024-06-17T00:00:00Z"
+      },
+      {
+        "name": "Zinc Chelate",
+        "description": "Zinc chelate to prevent zinc deficiency and promote healthy growth.",
+        "sku": "WMF-ZINC-007",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 42.0,
+        "cost": 29.0,
+        "stock_quantity": 500,
+        "sales_count": 120,
+        "last_sale_date": "2024-06-18T00:00:00Z"
+      },
+      {
+        "name": "Boron Fertilizer",
+        "description": "Boron fertilizer to improve cell wall formation and reproductive development.",
+        "sku": "WMF-BORON-008",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 38.0,
+        "cost": 26.0,
+        "stock_quantity": 400,
+        "sales_count": 100,
+        "last_sale_date": "2024-06-19T00:00:00Z"
+      },
+      {
+        "name": "Iron Chelate",
+        "description": "Iron chelate to prevent iron chlorosis and ensure healthy green leaves.",
+        "sku": "WMF-IRON-009",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 47.0,
+        "cost": 33.0,
+        "stock_quantity": 300,
+        "sales_count": 110,
+        "last_sale_date": "2024-06-20T00:00:00Z"
+      },
+      {
+        "name": "Manganese Sulfate",
+        "description": "Manganese sulfate to aid in photosynthesis and nitrogen assimilation.",
+        "sku": "WMF-MANG-010",
+        "category_id": 2,
+        "company_id": 3,
+        "price": 36.0,
+        "cost": 24.0,
+        "stock_quantity": 350,
+        "sales_count": 90,
+        "last_sale_date": "2024-06-21T00:00:00Z"
+      }
+    ],
+    "services": [
+      {
+        "name": "Soil Analysis",
+        "description": "Comprehensive soil analysis to determine nutrient needs and improve crop yield.",
+        "price": 150.0
+      },
+      {
+        "name": "Custom Fertilizer Blending",
+        "description": "Tailored fertilizer blending to meet specific crop requirements and soil conditions.",
+        "price": 200.0
+      },
+      {
+        "name": "Crop Consulting",
+        "description": "Expert consulting services to optimize crop management and maximize productivity.",
+        "price": 100.0
+      },
+      {
+        "name": "Fertilizer Application Services",
+        "description": "Professional fertilizer application to ensure accurate and efficient nutrient delivery.",
+        "price": 180.0
+      },
+      {
+        "name": "Nutrient Management Planning",
+        "description": "Customized nutrient management plans to enhance soil health and crop performance.",
+        "price": 120.0
+      }
+    ]
+  },
+  {
+    "first_name": "Emily",
+    "last_name": "Banister",
+    "email": "emily.banister@westernmilling.com",
+    "phone_number": "555-456-7890",
+    "company_name": "Western Milling Grain Merchandising",
+    "address_line1": "101 Grain Rd",
+    "address_line2": "",
+    "city": "Hereford",
+    "state": "TX",
+    "postal_code": "79045",
+    "country": "USA",
+    "isSupplier": false,
+    "isCustomer": false,
+    "isInternal": true,
+    "products": [
+      {
+        "name": "Corn",
+        "description": "High-quality corn for various uses, including animal feed and food production.",
+        "sku": "WMG-CORN-001",
+        "category_id": 3,
+        "company_id": 4,
+        "price": 6.0,
+        "cost": 4.0,
+        "stock_quantity": 5000,
+        "sales_count": 2000,
+        "last_sale_date": "2024-06-10T00:00:00Z"
+      },
+      {
+        "name": "Soybeans",
+        "description": "Premium soybeans suitable for animal feed and oil production.",
+        "sku": "WMG-SOY-002",
+        "category_id": 3,
+        "company_id": 4,
+        "price": 8.0,
+        "cost": 5.0,
+        "stock_quantity": 4000,
+        "sales_count": 1500,
+        "last_sale_date": "2024-06-11T00:00:00Z"
+      },
+      {
+        "name": "Wheat",
+        "description": "Top-grade wheat for baking, animal feed, and other food products.",
+        "sku": "WMG-WHEAT-003",
+        "category_id": 3,
+        "company_id": 4,
+        "price": 7.0,
+        "cost": 4.5,
+        "stock_quantity": 6000,
+        "sales_count": 2500,
+        "last_sale_date": "2024-06-12T00:00:00Z"
+      },
+      {
+        "name": "Barley",
+        "description": "High-quality barley for brewing, animal feed, and food production.",
+        "sku": "WMG-BARLEY-004",
+        "category_id": 3,
+        "company_id": 4,
+        "price": 5.5,
+        "cost": 3.5,
+        "stock_quantity": 3500,
+        "sales_count": 1800,
+        "last_sale_date": "2024-06-13T00:00:00Z"
+      }
+    ],
+    "services": [
+      {
+        "name": "Grain Sourcing",
+        "description": "Professional grain sourcing services to ensure high-quality grain supply.",
+        "price": 100.0
+      },
+      {
+        "name": "Market Analysis",
+        "description": "In-depth market analysis to help clients make informed grain trading decisions.",
+        "price": 150.0
+      },
+      {
+        "name": "Logistics Coordination",
+        "description": "Comprehensive logistics coordination to ensure timely and efficient grain delivery.",
+        "price": 200.0
+      },
+      {
+        "name": "Quality Assurance",
+        "description": "Quality assurance services to ensure grain meets industry standards and client specifications.",
+        "price": 120.0
+      },
+      {
+        "name": "Risk Management",
+        "description": "Risk management services to help clients mitigate market risks in grain trading.",
+        "price": 180.0
+      },
+      {
+        "name": "Contract Management",
+        "description": "Expert contract management services to ensure smooth and secure grain transactions.",
+        "price": 140.0
+      },
+      {
+        "name": "Storage Solutions",
+        "description": "Secure and efficient grain storage solutions to maintain grain quality and availability.",
+        "price": 160.0
+      },
+      {
+        "name": "Freight Services",
+        "description": "Reliable freight services to transport grain to various destinations.",
+        "price": 170.0
+      },
+      {
+        "name": "Custom Blending",
+        "description": "Custom grain blending services to meet specific client requirements.",
+        "price": 130.0
+      },
+      {
+        "name": "Inventory Management",
+        "description": "Comprehensive inventory management services to track and manage grain stocks.",
+        "price": 110.0
+      }
+    ]
+  },
+  {
     "first_name": "Ernie",
     "last_name": "Roncoroni",
     "email": "contact@growwest.com",
