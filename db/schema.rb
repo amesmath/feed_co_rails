@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_014747) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_27_163630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_014747) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "customers", force: :cascade do |t|
+  create_table "companies", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -35,6 +35,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_014747) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "isSupplier"
+    t.boolean "isCustomer"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_feedbacks_on_customer_id"
+    t.index ["product_id"], name: "index_feedbacks_on_product_id"
   end
 
   create_table "forecasts", force: :cascade do |t|
@@ -92,6 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_014747) do
     t.integer "stock_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sales_count"
+    t.datetime "last_sale_date"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["sku"], name: "index_products_on_sku", unique: true
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
@@ -198,9 +213,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_014747) do
     t.datetime "last_login_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedbacks", "companies", column: "customer_id"
+  add_foreign_key "feedbacks", "products"
   add_foreign_key "forecasts", "products"
   add_foreign_key "inventories", "products"
   add_foreign_key "merchandisings", "products"
@@ -208,7 +233,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_014747) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "suppliers"
   add_foreign_key "promotions", "products"
-  add_foreign_key "sales", "customers"
+  add_foreign_key "sales", "companies", column: "customer_id"
   add_foreign_key "sales_details", "products"
   add_foreign_key "sales_details", "sales"
   add_foreign_key "sales_targets", "products"
