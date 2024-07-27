@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 
   def index
     @total_sales = Sale.sum(:total_amount)
-    @total_customers = Customer.count
+    @total_customers = Company.count
     @products = Product.includes(:category).limit(5)
     @recent_sales = Sale.order(sale_date: :desc).limit(5)
 
