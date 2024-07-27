@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  forecast_type: MyString
+  product: one
+  forecast_period: MyString
+  forecast_date: 2024-07-26
+  forecast_value: 9.99
+
+two:
+  forecast_type: MyString
+  product: two
+  forecast_period: MyString
+  forecast_date: 2024-07-26
+  forecast_value: 9.99

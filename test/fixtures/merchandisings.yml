@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  activity_type: MyString
+  description: MyText
+  start_date: 2024-07-26 18:47:36
+  end_date: 2024-07-26 18:47:36
+  discount_percentage: 9.99
+
+two:
+  product: two
+  activity_type: MyString
+  description: MyText
+  start_date: 2024-07-26 18:47:36
+  end_date: 2024-07-26 18:47:36
+  discount_percentage: 9.99

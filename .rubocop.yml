@@ -1,0 +1,37 @@
+require:
+  - rubocop-rails
+  - rubocop-capybara
+
+AllCops:
+  SuggestExtensions: false
+  TargetRubyVersion: 2.7
+  NewCops: enable # Opt-in to new cops by default
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Newly added cops with explicit configuration
+Gemspec/AddRuntimeDependency:
+  Enabled: true
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+Gemspec/DevelopmentDependencies:
+  Enabled: true
+Gemspec/RequireMFA:
+  Enabled: true
+Layout/LineContinuationLeadingSpace:
+  Enabled: true
+Layout/LineContinuationSpacing:
+  Enabled: true
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: true
+Layout/SpaceBeforeBrackets:
+  Enabled: true
+Lint/AmbiguousAssignment:
+  Enabled: true
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: true
+Lint/AmbiguousRange:
+  Enabled: true
+Lint/ConstantOverwrittenInRescue:
+  Enabled: true

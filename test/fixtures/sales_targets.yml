@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  region: one
+  store: one
+  target_period: MyString
+  target_amount: 9.99
+  achieved_amount: 9.99
+  start_date: 2024-07-26 18:47:43
+  end_date: 2024-07-26 18:47:43
+
+two:
+  product: two
+  region: two
+  store: two
+  target_period: MyString
+  target_amount: 9.99
+  achieved_amount: 9.99
+  start_date: 2024-07-26 18:47:43
+  end_date: 2024-07-26 18:47:43
