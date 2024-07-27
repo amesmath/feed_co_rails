@@ -25,6 +25,7 @@
         "cost": 15.0,
         "stock_quantity": 1000,
         "sales_count": 200,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-15T00:00:00Z"
       },
       {
@@ -37,6 +38,7 @@
         "cost": 10.5,
         "stock_quantity": 500,
         "sales_count": 150,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-12T00:00:00Z"
       },
       {
@@ -49,6 +51,7 @@
         "cost": 12.0,
         "stock_quantity": 800,
         "sales_count": 300,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-10T00:00:00Z"
       },
       {
@@ -61,6 +64,7 @@
         "cost": 14.0,
         "stock_quantity": 700,
         "sales_count": 180,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-14T00:00:00Z"
       },
       {
@@ -73,6 +77,7 @@
         "cost": 16.0,
         "stock_quantity": 600,
         "sales_count": 220,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-13T00:00:00Z"
       },
       {
@@ -85,6 +90,7 @@
         "cost": 17.0,
         "stock_quantity": 900,
         "sales_count": 250,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-11T00:00:00Z"
       },
       {
@@ -97,6 +103,7 @@
         "cost": 11.5,
         "stock_quantity": 400,
         "sales_count": 100,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-16T00:00:00Z"
       },
       {
@@ -109,6 +116,7 @@
         "cost": 13.0,
         "stock_quantity": 350,
         "sales_count": 90,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-17T00:00:00Z"
       },
       {
@@ -121,6 +129,7 @@
         "cost": 15.0,
         "stock_quantity": 750,
         "sales_count": 140,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-18T00:00:00Z"
       },
       {
@@ -133,6 +142,7 @@
         "cost": 10.0,
         "stock_quantity": 300,
         "sales_count": 110,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-19T00:00:00Z"
       }
     ],
@@ -180,6 +190,7 @@
         "cost": 18.0,
         "stock_quantity": 800,
         "sales_count": 120,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-10T00:00:00Z"
       },
       {
@@ -192,6 +203,7 @@
         "cost": 11.5,
         "stock_quantity": 600,
         "sales_count": 180,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-11T00:00:00Z"
       },
       {
@@ -204,6 +216,7 @@
         "cost": 9.5,
         "stock_quantity": 400,
         "sales_count": 140,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-12T00:00:00Z"
       },
       {
@@ -216,6 +229,7 @@
         "cost": 14.0,
         "stock_quantity": 500,
         "sales_count": 160,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-13T00:00:00Z"
       },
       {
@@ -228,6 +242,7 @@
         "cost": 12.5,
         "stock_quantity": 350,
         "sales_count": 90,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-14T00:00:00Z"
       },
       {
@@ -240,6 +255,7 @@
         "cost": 10.5,
         "stock_quantity": 450,
         "sales_count": 110,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-15T00:00:00Z"
       },
       {
@@ -252,6 +268,7 @@
         "cost": 13.0,
         "stock_quantity": 300,
         "sales_count": 70,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-16T00:00:00Z"
       },
       {
@@ -264,6 +281,7 @@
         "cost": 15.0,
         "stock_quantity": 200,
         "sales_count": 60,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-17T00:00:00Z"
       },
       {
@@ -276,6 +294,7 @@
         "cost": 20.0,
         "stock_quantity": 750,
         "sales_count": 250,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-18T00:00:00Z"
       },
       {
@@ -288,6 +307,7 @@
         "cost": 18.0,
         "stock_quantity": 500,
         "sales_count": 200,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-19T00:00:00Z"
       },
       {
@@ -300,6 +320,7 @@
         "cost": 16.0,
         "stock_quantity": 300,
         "sales_count": 90,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-20T00:00:00Z"
       },
       {
@@ -312,6 +333,7 @@
         "cost": 9.0,
         "stock_quantity": 400,
         "sales_count": 130,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-21T00:00:00Z"
       }
     ],
@@ -354,6 +376,7 @@
         "cost": 30.0,
         "stock_quantity": 1000,
         "sales_count": 200,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-15T00:00:00Z"
       },
       {
@@ -366,6 +389,7 @@
         "cost": 35.0,
         "stock_quantity": 800,
         "sales_count": 150,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-12T00:00:00Z"
       },
       {
@@ -378,6 +402,7 @@
         "cost": 32.0,
         "stock_quantity": 900,
         "sales_count": 180,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-13T00:00:00Z"
       },
       {
@@ -390,6 +415,7 @@
         "cost": 37.0,
         "stock_quantity": 700,
         "sales_count": 160,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-14T00:00:00Z"
       },
       {
@@ -402,6 +428,7 @@
         "cost": 28.0,
         "stock_quantity": 600,
         "sales_count": 140,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-16T00:00:00Z"
       },
       {
@@ -414,6 +441,7 @@
         "cost": 25.0,
         "stock_quantity": 800,
         "sales_count": 130,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-17T00:00:00Z"
       },
       {
@@ -426,6 +454,7 @@
         "cost": 29.0,
         "stock_quantity": 500,
         "sales_count": 120,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-18T00:00:00Z"
       },
       {
@@ -438,6 +467,7 @@
         "cost": 26.0,
         "stock_quantity": 400,
         "sales_count": 100,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-19T00:00:00Z"
       },
       {
@@ -450,6 +480,7 @@
         "cost": 33.0,
         "stock_quantity": 300,
         "sales_count": 110,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-20T00:00:00Z"
       },
       {
@@ -462,6 +493,7 @@
         "cost": 24.0,
         "stock_quantity": 350,
         "sales_count": 90,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-21T00:00:00Z"
       }
     ],
@@ -519,6 +551,7 @@
         "cost": 4.0,
         "stock_quantity": 5000,
         "sales_count": 2000,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-10T00:00:00Z"
       },
       {
@@ -531,6 +564,7 @@
         "cost": 5.0,
         "stock_quantity": 4000,
         "sales_count": 1500,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-11T00:00:00Z"
       },
       {
@@ -543,6 +577,7 @@
         "cost": 4.5,
         "stock_quantity": 6000,
         "sales_count": 2500,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-12T00:00:00Z"
       },
       {
@@ -555,6 +590,7 @@
         "cost": 3.5,
         "stock_quantity": 3500,
         "sales_count": 1800,
+        "product_type": "wm_product",
         "last_sale_date": "2024-06-13T00:00:00Z"
       }
     ],

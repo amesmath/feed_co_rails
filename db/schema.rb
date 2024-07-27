@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_205650) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_27_211936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,6 +109,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_205650) do
     t.integer "sales_count"
     t.datetime "last_sale_date"
     t.string "product_type"
+    t.integer "min_lead_time"
+    t.integer "min_order_quantity"
+    t.integer "reorder_level"
+    t.integer "reorder_quantity"
+    t.string "unit_of_measure"
+    t.datetime "expiration_date"
+    t.decimal "weight"
+    t.string "dimensions"
+    t.string "storage_conditions"
+    t.string "product_origin"
+    t.string "certifications"
+    t.boolean "hazardous_material"
+    t.text "comments"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["sku"], name: "index_products_on_sku", unique: true

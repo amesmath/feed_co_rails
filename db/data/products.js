@@ -1,7 +1,16 @@
-[
+const productCategories = [
+  "Grains",
+  "Seeds",
+  "Feed",
+  "Hay and Forage",
+  "Supplements",
+  "Fertilizers and Soil Amendments",
+];
+
+const supplierProducts = [
   {
-    "supplier": "CHS Inc.",
-    "products": [
+    supplier: "CHS Inc.",
+    products: [
       "Yellow Corn",
       "White Corn",
       "Soybeans",
@@ -19,12 +28,12 @@
       "Whole Corn",
       "Cracked Corn",
       "Rolled Oats",
-      "Millet"
-    ]
+      "Millet",
+    ],
   },
   {
-    "supplier": "Cargill",
-    "products": [
+    supplier: "Cargill",
+    products: [
       "Yellow Corn",
       "White Corn",
       "Soybeans",
@@ -41,12 +50,12 @@
       "Whole Corn",
       "Cracked Corn",
       "Rolled Oats",
-      "Millet"
-    ]
+      "Millet",
+    ],
   },
   {
-    "supplier": "ADM",
-    "products": [
+    supplier: "ADM",
+    products: [
       "Yellow Corn",
       "White Corn",
       "Soybeans",
@@ -64,22 +73,22 @@
       "Whole Corn",
       "Cracked Corn",
       "Rolled Oats",
-      "Millet"
-    ]
+      "Millet",
+    ],
   },
   {
-    "supplier": "Dairy Farmers of America",
-    "products": [
+    supplier: "Dairy Farmers of America",
+    products: [
       "Yellow Corn",
       "White Corn",
       "Soybeans",
       "Whole Corn",
-      "Cracked Corn"
-    ]
+      "Cracked Corn",
+    ],
   },
   {
-    "supplier": "GROWMARK, Inc.",
-    "products": [
+    supplier: "GROWMARK, Inc.",
+    products: [
       "Wheat Grain",
       "Barley Grain",
       "Oats Grain",
@@ -88,12 +97,12 @@
       "Beet Pulp",
       "Distillers Dried Grains (DDGs)",
       "Rolled Oats",
-      "Millet"
-    ]
+      "Millet",
+    ],
   },
   {
-    "supplier": "Syngenta",
-    "products": [
+    supplier: "Syngenta",
+    products: [
       "Canola Seeds",
       "Sunflower Seeds",
       "Flaxseed",
@@ -116,16 +125,16 @@
       "Pyridoxine Hydrochloride (Vitamin B6)",
       "Biotin (Vitamin B7)",
       "Folic Acid (Vitamin B9)",
-      "Cyanocobalamin (Vitamin B12)"
-    ]
+      "Cyanocobalamin (Vitamin B12)",
+    ],
   },
   {
-    "supplier": "Butte County Rice Growers Association (BUCRA)",
-    "products": ["Rice Bran"]
+    supplier: "Butte County Rice Growers Association (BUCRA)",
+    products: ["Rice Bran"],
   },
   {
-    "supplier": "Grow West",
-    "products": [
+    supplier: "Grow West",
+    products: [
       "Alfalfa Hay",
       "Timothy Hay",
       "Agricultural Lime",
@@ -187,12 +196,12 @@
       "Sainfoin Seed",
       "Sudan Grass Seed",
       "Triticale Seed",
-      "Teff Grass Seed"
-    ]
+      "Teff Grass Seed",
+    ],
   },
   {
-    "supplier": "Buttonwillow Warehouse Co.",
-    "products": [
+    supplier: "Buttonwillow Warehouse Co.",
+    products: [
       "Alfalfa Hay",
       "Timothy Hay",
       "Agricultural Lime",
@@ -209,12 +218,12 @@
       "Calcium Nitrate",
       "Magnesium Sulfate (Epsom Salt)",
       "Triple Superphosphate (TSP)",
-      "Sulfate of Potash Magnesia (K-Mag)"
-    ]
+      "Sulfate of Potash Magnesia (K-Mag)",
+    ],
   },
   {
-    "supplier": "Mid Valley Agricultural Services",
-    "products": [
+    supplier: "Mid Valley Agricultural Services",
+    products: [
       "Alfalfa Hay",
       "Timothy Hay",
       "Agricultural Lime",
@@ -276,12 +285,12 @@
       "Sainfoin Seed",
       "Sudan Grass Seed",
       "Triticale Seed",
-      "Teff Grass Seed"
-    ]
+      "Teff Grass Seed",
+    ],
   },
   {
-    "supplier": "Land O’Lakes",
-    "products": [
+    supplier: "Land O’Lakes",
+    products: [
       "Vitamin A Supplement",
       "Vitamin D3 Supplement",
       "Vitamin E Supplement",
@@ -301,12 +310,12 @@
       "Pyridoxine Hydrochloride (Vitamin B6)",
       "Biotin (Vitamin B7)",
       "Folic Acid (Vitamin B9)",
-      "Cyanocobalamin (Vitamin B12)"
-    ]
+      "Cyanocobalamin (Vitamin B12)",
+    ],
   },
   {
-    "supplier": "Bayer CropScience",
-    "products": [
+    supplier: "Bayer CropScience",
+    products: [
       "Vitamin A Supplement",
       "Vitamin D3 Supplement",
       "Vitamin E Supplement",
@@ -326,12 +335,12 @@
       "Pyridoxine Hydrochloride (Vitamin B6)",
       "Biotin (Vitamin B7)",
       "Folic Acid (Vitamin B9)",
-      "Cyanocobalamin (Vitamin B12)"
-    ]
+      "Cyanocobalamin (Vitamin B12)",
+    ],
   },
   {
-    "supplier": "California Organic Fertilizers, Inc.",
-    "products": [
+    supplier: "California Organic Fertilizers, Inc.",
+    products: [
       "Bone Meal",
       "Blood Meal",
       "Fish Emulsion",
@@ -356,12 +365,12 @@
       "Cottonseed Fertilizer",
       "Soybean Meal Fertilizer",
       "Manure-based Compost",
-      "Worm Castings"
-    ]
+      "Worm Castings",
+    ],
   },
   {
-    "supplier": "Gar Bennett LLC",
-    "products": [
+    supplier: "Gar Bennett LLC",
+    products: [
       "Urea",
       "Ammonium Nitrate",
       "Ammonium Sulfate",
@@ -372,12 +381,12 @@
       "Calcium Nitrate",
       "Magnesium Sulfate (Epsom Salt)",
       "Triple Superphosphate (TSP)",
-      "Sulfate of Potash Magnesia (K-Mag)"
-    ]
+      "Sulfate of Potash Magnesia (K-Mag)",
+    ],
   },
   {
-    "supplier": "S&W Seed Co.",
-    "products": [
+    supplier: "S&W Seed Co.",
+    products: [
       "Hybrid Corn Seed",
       "Non-GMO Soybean Seed",
       "Wheat Seed",
@@ -397,7 +406,7 @@
       "Sainfoin Seed",
       "Sudan Grass Seed",
       "Triticale Seed",
-      "Teff Grass Seed"
-    ]
-  }
-]
+      "Teff Grass Seed",
+    ],
+  },
+];
