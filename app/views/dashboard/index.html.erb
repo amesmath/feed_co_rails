@@ -1,0 +1,14 @@
+<div>
+    <h1>Sales Dashboard</h1>
+    <div>
+        <h2>Total Sales: <%= number_to_currency(@total_sales) %></h2>
+    </div>
+    <div>
+        <h2>Sales by Category</h2>
+        <%= line_chart @sales_by_category %>
+    </div>
+    <div>
+        <h2>Sales Trends</h2>
+        <%= line_chart @sales_trends %>
+    </div>
+</div>
