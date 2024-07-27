@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_030037) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_27_145048) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_030037) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "age"
+    t.string "gender"
+    t.string "customer_segment"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -103,6 +106,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_030037) do
     t.integer "stock_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sales_count"
+    t.datetime "last_sale_date"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
