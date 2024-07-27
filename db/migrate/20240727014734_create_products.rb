@@ -13,6 +13,12 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
+    add_index :products, :category_id unless index_exists?(:products, :category_id)
+
+    add_index :products, :company_id unless index_exists?(:products, :company_id)
+
+    return if index_exists?(:products, :sku, unique: true)
+
     add_index :products, :sku, unique: true
   end
 end
