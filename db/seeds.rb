@@ -3700,7 +3700,7 @@ supplier_companies.each do |company_data|
   )
 
   company_data[:productKeys].each do |product_key|
-    product_data = all_supplier_products[product_key]
+    product_data = all_supplier_products[product_key.to_i]
     company.products.create!(
       name: product_data[:name],
       description: product_data[:description],

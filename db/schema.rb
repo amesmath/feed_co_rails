@@ -132,7 +132,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
     t.boolean "hazardous_material"
     t.text "comments"
     t.index ["company_id"], name: "index_products_on_company_id"
-    t.index ["sku"], name: "index_products_on_sku", unique: true
   end
 
   create_table "products_purchase_orders", id: false, force: :cascade do |t|
