@@ -1,96 +1,65 @@
-/* app/assets/stylesheets/dashboard.css */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: "Monaco", Arial, sans-serif;
+  background-color: #f2f2f2;
   color: #333;
+  margin: 0;
 }
 
 .dashboard {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "sidebar main";
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: auto 1fr;
-  height: 100vh;
-}
-
-header {
-  grid-area: header;
-  background: #ffffff;
-  padding: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar {
-  grid-area: sidebar;
-  background: #2a3f54;
-  color: #ffffff;
-  padding: 1em;
-}
-
-.sidebar nav ul {
-  list-style: none;
-}
-
-.sidebar nav ul li {
-  padding: 1em 0;
-  border-bottom: 1px solid #3a4f64;
-}
-
-.main-content {
-  grid-area: main;
-  padding: 1em;
-}
-
-.overview,
-.recent-products,
-.recent-sales,
-.charts,
-.financial-summary,
-.gpt-analysis {
-  margin-bottom: 1em;
-}
-
-.overview,
-.financial-summary {
-  display: flex;
-  justify-content: space-between;
-}
-
-.overview-item,
-.financial-item,
-.chart {
-  background: #ffffff;
-  padding: 1em;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex: 1;
-  margin: 0 0.5em;
-  text-align: center;
-}
-
-.overview-item h2,
-.financial-item h2 {
-  font-size: 1.2em;
-  margin-bottom: 0.5em;
-}
-
-.chart h2 {
-  text-align: left;
-  margin-bottom: 0.5em;
-}
-
-.chart canvas {
   width: 100%;
-  height: 300px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.dashboard-header {
+  text-align: center;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  padding: 14px 30px;
+  background: #fff;
+}
+
+.dashboard-header h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  font-size: 14px;
+  color: #666;
+}
+
+.dashboard-content {
+  margin-top: 20px;
+  padding: 40px 70px;
+}
+.dashboard-content {
+  margin-top: 20px;
+}
+
+.widget-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.widget {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 10px;
+  border-radius: 7px;
+  text-align: center;
+  max-width: 350px;
+}
+
+.large-widget {
+  flex: 2;
+  max-width: 772px !important;
+}
+
+.widget h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
 }

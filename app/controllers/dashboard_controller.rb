@@ -1,10 +1,8 @@
 class DashboardController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @total_sales = Sale.sum(:total_amount)
     @total_customers = Company.count
-    @products = Product.includes(:category).limit(5)
+    @products = Product.limit(5)
     @recent_sales = Sale.order(sale_date: :desc).limit(5)
 
     gpt_service = GptService.new(ENV.fetch('GPT_API_KEY', nil))

@@ -1,121 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>FeedCo</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
 </head>
 <body>
   <div class="dashboard">
-    <header>
+    <header class="dashboard-header">
       <h1>FeedCo</h1>
-      <div class="header-menu">
-        <!-- Add navigation items and user profile info here -->
-      </div>
     </header>
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li>Dashboard</li>
-          <li>Analytics</li>
-          <li>Commerce</li>
-          <li>Sales</li>
-          <li>Minimal</li>
-          <li>CRM</li>
-          <!-- Add more menu items as needed -->
-        </ul>
-      </nav>
-    </aside>
-    <main class="main-content">
-      <section class="overview">
-        <div class="overview-item">
-          <h2>Total Sales</h2>
-          <p><%= number_to_currency(@total_sales) %></p>
+    <div class="dashboard-content">
+      <div class="widget-row">
+        <div class="widget">
+          <h2>Purchasing</h2>
+          <!-- Insert graph here -->
         </div>
-        <div class="overview-item">
-          <h2>Total Customers</h2>
-          <p><%= @total_customers %></p>
+        <div class="widget">
+          <h2>Inventory</h2>
+          <!-- Insert graph here -->
         </div>
-        <div class="overview-item">
-          <h2>New Accounts</h2>
-          <p>234%</p>
+        <div class="widget">
+          <h2>Sales</h2>
+          <!-- Insert graph here -->
         </div>
-        <div class="overview-item">
-          <h2>Total Expenses</h2>
-          <p>71%</p>
+      </div>
+      <div class="widget-row">
+        <div class="widget large-widget">
+          <!-- Insert combined graph or content here -->
         </div>
-        <div class="overview-item">
-          <h2>Company Value</h2>
-          <p>$1.45M</p>
+        <div class="widget">
+          <h3>Sales Last Quarter</h3>
+          <!-- Insert graph here -->
         </div>
-        <div class="overview-item">
-          <h2>New Employees</h2>
-          <p>+34 hires</p>
-        </div>
-      </section>
-
-      <section class="recent-products">
-        <h2>Recent Products</h2>
-        <ul>
-          <% @products.each do |product| %>
-            <li><%= product.name %> - <%= product.category.name %></li>
-          <% end %>
-        </ul>
-      </section>
-
-      <section class="recent-sales">
-        <h2>Recent Sales</h2>
-        <ul>
-          <% @recent_sales.each do |sale| %>
-            <li><%= sale.customer.first_name %> <%= sale.customer.last_name %> - <%= number_to_currency(sale.total_amount) %></li>
-          <% end %>
-        </ul>
-      </section>
-
-      <section class="charts">
-        <div class="chart traffic-sources">
-          <h2>Traffic Sources</h2>
-          <canvas id="trafficSourcesChart"></canvas>
-        </div>
-        <div class="chart sales-over-time">
-          <h2>Sales Over Time</h2>
-          <%= line_chart Sale.group_by_day(:sale_date).sum(:total_amount) %>
-        </div>
-        <div class="chart income">
-          <h2>Income</h2>
-          <div class="income-chart">
-            <!-- Replace with your chart library code -->
-          </div>
-        </div>
-      </section>
-
-      <section class="financial-summary">
-        <div class="financial-item">
-          <h2>Income</h2>
-          <p>$5,456</p>
-        </div>
-        <div class="financial-item">
-          <h2>Expenses</h2>
-          <p>$4,764</p>
-        </div>
-        <div class="financial-item">
-          <h2>Spendings</h2>
-          <p>$1.5M</p>
-        </div>
-        <div class="financial-item">
-          <h2>Totals</h2>
-          <p>$31,564</p>
-        </div>
-      </section>
-
-      <section class="gpt-analysis">
-        <h2>GPT Analysis</h2>
-        <p><%= @gpt_analysis %></p>
-      </section>
-    </main>
+      </div>
+    </div>
   </div>
-  <%= javascript_include_tag 'dashboard' %>
 </body>
 </html>
