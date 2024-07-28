@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>FeedCo</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application' , media: 'all' %>
 </head>
+
 <body>
   <div class="dashboard">
     <header class="dashboard-header">
@@ -25,8 +27,8 @@
         </div>
       </div>
       <div class="widget-row">
-        <div id="container" class="widget large-widget">
-          <!-- Insert combined graph or content here -->
+        <div class="widget large-widget">
+          <div id="container"></div>
         </div>
         <div class="widget">
           <h3>Sales Last Quarter</h3>
@@ -36,19 +38,30 @@
     </div>
   </div>
 </body>
-</html>
 
+</html>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const salesData = <%= @sales_data.to_json.html_safe %>;
+    const container = document.getElementById('container');
+    if (!container) {
+      console.error('Container element not found');
+      return;
+    }
+
+    const purchaseOrderData = <%= @purchase_order_data.to_json.html_safe %>;
+
+    if (!purchaseOrderData || Object.keys(purchaseOrderData).length === 0) {
+      console.error('Purchase order data is empty or not defined');
+      return;
+    }
 
     Highcharts.chart('container', {
       chart: {
         type: 'line'
       },
       title: {
-        text: 'Monthly Sales Data'
+        text: 'Monthly Purchase Order Data'
       },
       subtitle: {
         text: 'Last Six Months'
@@ -58,7 +71,7 @@
       },
       yAxis: {
         title: {
-          text: 'Sales Count'
+          text: 'Purchase Order Count'
         }
       },
       plotOptions: {
@@ -69,9 +82,9 @@
           enableMouseTracking: true
         }
       },
-      series: Object.keys(salesData).map(productName => ({
+      series: Object.keys(purchaseOrderData).map(productName => ({
         name: productName,
-        data: salesData[productName]
+        data: purchaseOrderData[productName]
       }))
     });
   });

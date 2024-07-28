@@ -12,7 +12,7 @@
 //
 // app/assets/javascripts/application.js
 //= require rails-ujs
-//= require chartkick
+//= require highcharts
 //= require Chart.bundle
 //= require dashboard
 //= require_tree .

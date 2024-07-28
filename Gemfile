@@ -39,9 +39,11 @@ gem 'jbuilder'
 # gem "bcrypt", "~> 3.1.7"
 
 # Charts
-gem 'chartkick'
-gem 'devise'
 gem 'groupdate'
+gem 'highcharts-rails'
+
+# Users
+gem 'devise'
 
 # For API integration
 gem 'httparty'

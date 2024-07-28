@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
-  before_action :auto_login_dev_user
+  # before_action :auto_login_dev_user
 
   private
 
