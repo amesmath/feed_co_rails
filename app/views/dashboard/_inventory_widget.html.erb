@@ -1,0 +1,17 @@
+<div>
+    <h2>Low Stock Alerts</h2>
+    <div>
+        <% @low_stock_products.each do |product| %>
+            <div class="low-stock_productItem">
+                <strong>
+                    <span>
+                        <%= product.name %>
+                    </span>
+                </strong><br>
+                Current Stock: <span class="low-stock_productAmount">
+                    <%= product.stock_quantity %>
+                </span> kg<br>
+            </div>
+            <% end %>
+    </div>
+</div>

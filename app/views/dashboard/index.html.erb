@@ -14,15 +14,13 @@
     <div class="dashboard-content">
       <div class="widget-row">
         <div class="widget">
-          <h2>Purchasing</h2>
-          <!-- Insert graph here -->
+          <div id="companies_pie_chart"></div>
         </div>
         <div class="widget">
-          <h2>Inventory</h2>
-          <!-- Insert graph here -->
+          <%= render 'inventory_widget' %>
         </div>
         <div class="widget">
-          <h2>Sales</h2>
+          <h2>Top Products</h2>
           <!-- Insert graph here -->
         </div>
       </div>
@@ -31,7 +29,7 @@
           <div id="container"></div>
         </div>
         <div class="widget">
-          <h3>Sales Last Quarter</h3>
+          <h3>Cost Calculator</h3>
           <!-- Insert graph here -->
         </div>
       </div>
@@ -42,6 +40,29 @@
 </html>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    Highcharts.chart('companies_pie_chart', {
+      chart: {
+        type: 'pie'
+      },
+      title: {
+        text: 'Top Suppliers'
+      },
+      series: [{
+        name: 'Products',
+        colorByPoint: true,
+        data: [
+          <% @companies.each do | company | %>
+        {
+          name: '<%= company.company_name %>',
+          y: <%= company.product_count %>
+            },
+          <% end %>
+        ]
+    }]
+    });
+  });
+
   document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('container');
     if (!container) {

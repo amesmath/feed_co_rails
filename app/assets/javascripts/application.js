@@ -13,6 +13,5 @@
 // app/assets/javascripts/application.js
 //= require rails-ujs
 //= require highcharts
-//= require Chart.bundle
 //= require dashboard
 //= require_tree .

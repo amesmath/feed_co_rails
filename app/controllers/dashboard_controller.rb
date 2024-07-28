@@ -2,16 +2,28 @@
 class DashboardController < ApplicationController
   def index
     @purchase_order_data = purchase_order_data_for_chart
+    @companies = with_more_than_ten_products
+    @low_stock_products = Product.where('company_id IN (?)', internal_company_ids)
+                                 .order(:stock_quantity)
+                                 .limit(3)
   end
 
   private
 
-  def purchase_order_data_for_chart
-    # Get all Companies where is_internal: true
-    internal_company_ids = Company.where(is_internal: true).pluck(:id)
+  def internal_company_ids
+    Company.where(is_internal: true).pluck(:id)
+  end
 
+  def with_more_than_ten_products
+    @companies = Company.joins(:products)
+                        .group('companies.id')
+                        .having('COUNT(products.id) > 16')
+                        .select('companies.*, COUNT(products.id) as product_count')
+  end
+
+  def purchase_order_data_for_chart
     # Get all PurchaseOrders where company_id is one of the internal_company_ids
-    purchase_orders = PurchaseOrder.where(company_id: internal_company_ids)
+    purchase_orders = PurchaseOrder.where(company_id: internal_company_ids).limit(140)
 
     # Initialize a hash to store the purchase order count by product and month
     purchase_order_data = Hash.new { |hash, key| hash[key] = Array.new(6, 0) }
