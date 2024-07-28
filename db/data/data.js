@@ -1486,32 +1486,32 @@ const internalCompanies = [
         ingredients: [
           {
             supplier_product_key: 161, // Urea
-            weight_needed_per_batch: 20, // example value
+            weight_needed_per_batch: 20,
             unit_of_measure: "kg",
           },
           {
             supplier_product_key: 162, // Ammonium Nitrate
-            weight_needed_per_batch: 15, // example value
+            weight_needed_per_batch: 15,
             unit_of_measure: "kg",
           },
           {
             supplier_product_key: 163, // Ammonium Sulfate
-            weight_needed_per_batch: 10, // example value
+            weight_needed_per_batch: 10,
             unit_of_measure: "kg",
           },
           {
             supplier_product_key: 164, // Diammonium Phosphate (DAP)
-            weight_needed_per_batch: 12, // example value
+            weight_needed_per_batch: 12,
             unit_of_measure: "kg",
           },
           {
             supplier_product_key: 168, // Calcium Nitrate
-            weight_needed_per_batch: 8, // example value
+            weight_needed_per_batch: 8,
             unit_of_measure: "kg",
           },
           {
             supplier_product_key: 169, // Magnesium Sulfate (Epsom Salt)
-            weight_needed_per_batch: 5, // example value
+            weight_needed_per_batch: 5,
             unit_of_measure: "kg",
           },
         ],

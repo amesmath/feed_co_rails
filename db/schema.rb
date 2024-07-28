@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_28_012612) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -136,6 +136,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_012612) do
     t.index ["sku"], name: "index_products_on_sku", unique: true
   end
 
+  create_table "products_purchase_orders", id: false, force: :cascade do |t|
+    t.bigint "purchase_order_id", null: false
+    t.bigint "product_id", null: false
+    t.index ["product_id"], name: "index_products_purchase_orders_on_product_id"
+    t.index ["purchase_order_id"], name: "index_products_purchase_orders_on_purchase_order_id"
+  end
+
   create_table "promotions", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -147,6 +154,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_012612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_promotions_on_product_id"
+  end
+
+  create_table "purchase_orders", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "order_number", null: false
+    t.date "order_date", null: false
+    t.date "delivery_date"
+    t.decimal "total_amount", precision: 10, scale: 2, null: false
+    t.string "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_purchase_orders_on_company_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -251,6 +270,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_012612) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "companies"
   add_foreign_key "promotions", "products"
+  add_foreign_key "purchase_orders", "companies"
   add_foreign_key "sales", "companies"
   add_foreign_key "sales_details", "products"
   add_foreign_key "sales_details", "sales"
