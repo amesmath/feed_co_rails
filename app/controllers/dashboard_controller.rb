@@ -7,25 +7,33 @@ class DashboardController < ApplicationController
   private
 
   def purchase_order_data_for_chart
-    products = Product.all
-    purchase_order_data = {}
-    current_month = Date.today.beginning_of_month
+    # Get all Companies where is_internal: true
+    internal_company_ids = Company.where(is_internal: true).pluck(:id)
 
-    # Get purchase order counts grouped by product and month in one query
-    purchase_orders = PurchaseOrder
-                      .where(order_date: 6.months.ago.beginning_of_month..current_month)
-                      .group("product_id, DATE_TRUNC('month', order_date)")
-                      .count
+    # Get all PurchaseOrders where company_id is one of the internal_company_ids
+    purchase_orders = PurchaseOrder.where(company_id: internal_company_ids)
 
-    products.each do |product|
-      po_counts = (0..5).map do |i|
-        month = i.months.ago.beginning_of_month
-        purchase_orders[[product.id, month]] || 0
+    # Initialize a hash to store the purchase order count by product and month
+    purchase_order_data = Hash.new { |hash, key| hash[key] = Array.new(6, 0) }
+
+    # Define the last six months
+    last_six_months = (0..5).map { |i| (Date.today - i.months).strftime('%B') }.reverse
+
+    purchase_orders.each do |po|
+      month = po.order_date.strftime('%B')
+      index = last_six_months.index(month)
+      next if index.nil? # Skip if the month is not in the last six months
+
+      po.products.each do |product|
+        product_name = product.name
+        purchase_order_data[product_name][index] += 1
       end
-
-      purchase_order_data[product.name] = po_counts.reverse
     end
 
-    purchase_order_data
+    # Return data formatted for HighCharts
+    {
+      categories: last_six_months,
+      series: purchase_order_data.map { |product_name, data| { name: product_name, data: data } }
+    }
   end
 end

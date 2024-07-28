@@ -3048,6 +3048,20 @@ internal_companies = [
   }
 ]
 
+# Method to generate random dates within the past and future 3 months
+def random_date_within_3_months
+  start_date = 3.months.ago.to_date
+  end_date = 3.months.from_now.to_date
+  rand(start_date..end_date)
+end
+
+# Method to randomize a value within +/- 20%
+def randomize_value(value)
+  min_value = value * 0.8
+  max_value = value * 1.2
+  rand(min_value..max_value)
+end
+
 internal_companies.each do |company_data|
   company = Company.create!(
     first_name: company_data[:first_name],
@@ -3061,9 +3075,9 @@ internal_companies.each do |company_data|
     state: company_data[:state],
     postal_code: company_data[:postal_code],
     country: company_data[:country],
-    isSupplier: company_data[:isSupplier],
-    isCustomer: company_data[:isCustomer],
-    isInternal: company_data[:isInternal]
+    is_supplier: company_data[:is_supplier],
+    is_customer: company_data[:is_customer],
+    is_internal: company_data[:is_internal]
   )
 
   company_data[:products].each do |product_data|
@@ -3085,6 +3099,24 @@ internal_companies.each do |company_data|
         unit_of_measure: ingredient_data[:unit_of_measure]
       )
     end
+
+    # Creating purchase orders for the company
+    20.times do
+      purchase_order = PurchaseOrder.create!(
+        company: company,
+        order_number: Faker::Number.unique.number(digits: 10),
+        order_date: random_date_within_3_months,
+        delivery_date: random_date_within_3_months,
+        total_amount: Faker::Commerce.price(range: 1000..10_000),
+        status: %w[Pending Shipped Delivered Cancelled].sample
+      )
+
+      # Associate random products with the purchase order
+      rand(1..5).times do
+        product = Product.order('RANDOM()').first # Select a random product
+        purchase_order.products << product
+      end
+    end
   end
 end
 
@@ -3102,8 +3134,8 @@ supplier_companies = [
     state: 'CA',
     postal_code: '95776',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: true,
+    is_supplier: true,
+    is_customer: true,
     productKeys: %w[
       139
       140
@@ -3181,8 +3213,8 @@ supplier_companies = [
     state: 'CA',
     postal_code: '93311',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       139
       140
@@ -3215,8 +3247,8 @@ supplier_companies = [
     state: 'CA',
     postal_code: '95361',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       139
       140
@@ -3294,8 +3326,8 @@ supplier_companies = [
     state: 'CA',
     postal_code: '93654',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: true,
+    is_supplier: true,
+    is_customer: true,
     productKeys: %w[
       161
       162
@@ -3322,8 +3354,8 @@ supplier_companies = [
     state: 'CA',
     postal_code: '95974',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: ['111']
   },
   {
@@ -3338,8 +3370,8 @@ supplier_companies = [
     state: 'CA',
     postal_code: '93230',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       145
       146
@@ -3380,8 +3412,8 @@ supplier_companies = [
     state: 'CA',
     postal_code: '95814',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       181
       182
@@ -3417,8 +3449,8 @@ supplier_companies = [
     state: 'MN',
     postal_code: '55077',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: true,
+    is_supplier: true,
+    is_customer: true,
     productKeys: %w[
       101
       102
@@ -3452,8 +3484,8 @@ supplier_companies = [
     state: 'IL',
     postal_code: '61701',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: true,
+    is_supplier: true,
+    is_customer: true,
     productKeys: %w[
       104
       105
@@ -3478,8 +3510,8 @@ supplier_companies = [
     state: 'MN',
     postal_code: '55391',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       101
       102
@@ -3512,8 +3544,8 @@ supplier_companies = [
     state: 'IL',
     postal_code: '60601',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       101
       102
@@ -3547,8 +3579,8 @@ supplier_companies = [
     state: 'NC',
     postal_code: '27709',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       119
       120
@@ -3584,8 +3616,8 @@ supplier_companies = [
     state: '',
     postal_code: '4002',
     country: 'Switzerland',
-    isSupplier: true,
-    isCustomer: false,
+    is_supplier: true,
+    is_customer: false,
     productKeys: %w[
       108
       109
@@ -3624,8 +3656,8 @@ supplier_companies = [
     state: 'MO',
     postal_code: '64155',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: true,
+    is_supplier: true,
+    is_customer: true,
     productKeys: %w[101 102 103 115 116]
   },
   {
@@ -3640,8 +3672,8 @@ supplier_companies = [
     state: 'MN',
     postal_code: '55126',
     country: 'USA',
-    isSupplier: true,
-    isCustomer: true,
+    is_supplier: true,
+    is_customer: true,
     productKeys: %w[
       119
       120
@@ -3667,20 +3699,6 @@ supplier_companies = [
   }
 ]
 
-# Method to generate random dates within the past and future 3 months
-def random_date_within_3_months
-  start_date = 3.months.ago.to_date
-  end_date = 3.months.from_now.to_date
-  rand(start_date..end_date)
-end
-
-# Method to randomize a value within +/- 20%
-def randomize_value(value)
-  min_value = value * 0.8
-  max_value = value * 1.2
-  rand(min_value..max_value)
-end
-
 supplier_companies.each do |company_data|
   company = Company.create!(
     first_name: company_data[:first_name],
@@ -3694,9 +3712,9 @@ supplier_companies.each do |company_data|
     state: company_data[:state],
     postal_code: company_data[:postal_code],
     country: company_data[:country],
-    isSupplier: company_data[:isSupplier],
-    isCustomer: company_data[:isCustomer],
-    isInternal: false
+    is_supplier: company_data[:is_supplier],
+    is_customer: company_data[:is_customer],
+    is_internal: false
   )
 
   company_data[:productKeys].each do |product_key|
@@ -3722,20 +3740,8 @@ supplier_companies.each do |company_data|
       certifications: product_data[:certifications],
       hazardous_material: product_data[:hazardous_material]
     )
-
-    # Creating purchase orders for the company
-    30.times do
-      PurchaseOrder.create!(
-        company: company,
-        product_id: product.id,
-        order_number: Faker::Number.unique.number(digits: 10),
-        order_date: random_date_within_3_months,
-        delivery_date: random_date_within_3_months,
-        total_amount: Faker::Commerce.price(range: 1000..10_000),
-        status: %w[Pending Shipped Delivered Cancelled].sample
-      )
-    end
   end
 end
 
 puts 'Seeding completed successfully!'
+puts "PurchaseOrder count after seeding: #{PurchaseOrder.count}"

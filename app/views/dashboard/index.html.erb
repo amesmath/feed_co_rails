@@ -67,7 +67,7 @@
         text: 'Last Six Months'
       },
       xAxis: {
-        categories: ['January', 'February', 'March', 'April', 'May', 'June'] // Adjust this based on the current month
+        categories: purchaseOrderData.categories
       },
       yAxis: {
         title: {
@@ -82,10 +82,7 @@
           enableMouseTracking: true
         }
       },
-      series: Object.keys(purchaseOrderData).map(productName => ({
-        name: productName,
-        data: purchaseOrderData[productName]
-      }))
+      series: purchaseOrderData.series
     });
   });
 </script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_28_204755) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,11 +33,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_204755) do
     t.string "state"
     t.string "postal_code"
     t.string "country"
-    t.boolean "isSupplier", default: false
-    t.boolean "isCustomer", default: false
+    t.boolean "is_supplier", default: false
+    t.boolean "is_customer", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "isInternal"
+    t.boolean "is_internal"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -163,7 +163,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_204755) do
     t.string "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_id"
     t.index ["company_id"], name: "index_purchase_orders_on_company_id"
   end
 
