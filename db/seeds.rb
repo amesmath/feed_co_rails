@@ -3,7 +3,7 @@
 require 'faker'
 
 # Clear existing data
-[Category, Company, Product, Ingredient, Inventory, Pricing, Promotion, Sale, Forecast, Feedback,
+[Company, Product, Ingredient, Inventory, Pricing, Promotion, Sale, Forecast, Feedback,
  Merchandising, PurchaseOrder, Region, SalesTarget, Store, User, Service].each(&:destroy_all)
 
 all_supplier_products = {
@@ -2156,19 +2156,6 @@ all_supplier_products = {
   }
 }
 
-# Create Categories
-product_categories = [
-  'Grains',
-  'Seeds',
-  'Feed',
-  'Hay and Forage',
-  'Supplements',
-  'Fertilizers and Soil Amendments'
-]
-
-product_categories.each do |category|
-  Category.create!(name: category, description: Faker::Lorem.sentence)
-end
 # Create Internal Companies
 internal_companies = [
   {
