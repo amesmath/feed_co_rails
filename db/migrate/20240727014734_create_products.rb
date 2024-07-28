@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :name
       t.text :description
       t.string :sku
-      t.references :category, null: false, foreign_key: true
+      t.string :category
       t.references :company, null: false, foreign_key: true
       t.decimal :price
       t.decimal :cost
@@ -12,8 +12,6 @@ class CreateProducts < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-
-    add_index :products, :category_id unless index_exists?(:products, :category_id)
 
     add_index :products, :company_id unless index_exists?(:products, :company_id)
 

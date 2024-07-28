@@ -33,8 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
     t.string "state"
     t.string "postal_code"
     t.string "country"
-    t.boolean "isSupplier", default: false, null: false
-    t.boolean "isCustomer", default: false, null: false
+    t.boolean "isSupplier", default: false
+    t.boolean "isCustomer", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "isInternal"
@@ -108,7 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
     t.string "name"
     t.text "description"
     t.string "sku"
-    t.bigint "category_id"
+    t.string "category"
     t.bigint "company_id", null: false
     t.decimal "price"
     t.decimal "cost"
@@ -131,7 +131,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
     t.string "certifications"
     t.boolean "hazardous_material"
     t.text "comments"
-    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["sku"], name: "index_products_on_sku", unique: true
   end
@@ -267,7 +266,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
   add_foreign_key "inventories", "products"
   add_foreign_key "merchandisings", "products"
   add_foreign_key "pricings", "products"
-  add_foreign_key "products", "categories"
   add_foreign_key "products", "companies"
   add_foreign_key "promotions", "products"
   add_foreign_key "purchase_orders", "companies"

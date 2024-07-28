@@ -12,8 +12,8 @@ class CreateCompanies < ActiveRecord::Migration[7.0]
       t.string :state
       t.string :postal_code
       t.string :country
-      t.boolean :isSupplier, default: false, null: false
-      t.boolean :isCustomer, default: false, null: false
+      t.boolean :isSupplier, default: false, null: true
+      t.boolean :isCustomer, default: false, null: true
       t.timestamps
     end
   end
