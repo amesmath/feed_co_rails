@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="widget-row">
-        <div class="widget large-widget">
+        <div id="container" class="widget large-widget">
           <!-- Insert combined graph or content here -->
         </div>
         <div class="widget">
@@ -37,3 +37,42 @@
   </div>
 </body>
 </html>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const salesData = <%= @sales_data.to_json.html_safe %>;
+
+    Highcharts.chart('container', {
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Monthly Sales Data'
+      },
+      subtitle: {
+        text: 'Last Six Months'
+      },
+      xAxis: {
+        categories: ['January', 'February', 'March', 'April', 'May', 'June'] // Adjust this based on the current month
+      },
+      yAxis: {
+        title: {
+          text: 'Sales Count'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            enabled: true
+          },
+          enableMouseTracking: true
+        }
+      },
+      series: Object.keys(salesData).map(productName => ({
+        name: productName,
+        data: salesData[productName]
+      }))
+    });
+  });
+</script>

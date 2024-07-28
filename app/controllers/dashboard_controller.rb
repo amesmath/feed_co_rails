@@ -1,17 +1,24 @@
 class DashboardController < ApplicationController
   def index
-    @total_sales = Sale.sum(:total_amount)
-    @total_customers = Company.count
-    @products = Product.limit(5)
-    @recent_sales = Sale.order(sale_date: :desc).limit(5)
+    @sales_data = sales_data_for_chart
+  end
 
-    gpt_service = GptService.new(ENV.fetch('GPT_API_KEY', nil))
-    response = gpt_service.get_analysis('Analyze the sales data trends.')
+  private
 
-    @gpt_analysis = if response && response['choices']
-                      response['choices'][0]['text']
-                    else
-                      'GPT analysis could not be retrieved.'
-                    end
+  def sales_data_for_chart
+    products = Product.all.includes(:company)
+    sales_data = {}
+
+    products.each do |product|
+      sales_counts = (0..5).map do |i|
+        start_date = i.months.ago.beginning_of_month
+        end_date = i.months.ago.end_of_month
+        product.sales.where('created_at BETWEEN ? AND ?', start_date, end_date).count
+      end
+
+      sales_data[product.name] = sales_counts.reverse
+    end
+
+    sales_data
   end
 end

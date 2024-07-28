@@ -3701,7 +3701,7 @@ supplier_companies.each do |company_data|
 
   company_data[:productKeys].each do |product_key|
     product_data = all_supplier_products[product_key.to_i]
-    company.products.create!(
+    product = company.products.create!(
       name: product_data[:name],
       description: product_data[:description],
       sku: product_data[:sku],
@@ -3726,7 +3726,8 @@ supplier_companies.each do |company_data|
     # Creating purchase orders for the company
     30.times do
       PurchaseOrder.create!(
-        company_id: company.id,
+        company: company,
+        product_id: product.id,
         order_number: Faker::Number.unique.number(digits: 10),
         order_date: random_date_within_3_months,
         delivery_date: random_date_within_3_months,
