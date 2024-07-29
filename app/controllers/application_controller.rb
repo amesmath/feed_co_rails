@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user!
-
-  before_action :auto_login_dev_user
+  before_action :bypass_login_for_demo
 
   private
 
-  def auto_login_dev_user
-    sign_in(User.first) unless user_signed_in?
+  def bypass_login_for_demo
+    return unless Rails.env.production? && ENV['DEMO_MODE'] == 'true'
+    
+    # Example user bypass
+    user = User.find_by(email: 'demo@example.com')
+    sign_in(user) if user
   end
 end
