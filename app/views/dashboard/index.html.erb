@@ -137,7 +137,6 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     const chartData = <%= @chart_data.to_json.html_safe %>;
-    console.log('chartData:', chartData)
 
     Highcharts.chart('purchase-orders-chart', {
       chart: {

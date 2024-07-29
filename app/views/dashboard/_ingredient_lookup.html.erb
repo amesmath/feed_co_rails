@@ -5,22 +5,82 @@
 
 <div class="ingredients-results" id="search-results"></div>
 
+<style>
+    .company-link {
+        color: #6595b6;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .company-link:hover {
+        color: rgb(72, 114, 142);
+    }
+
+    .additional-info {
+        display: none;
+        background: #fcfcfc;
+        border-top: 1px solid rgb(229, 229, 229);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        height: 70px;
+        margin: 0;
+        font-size: 14px;
+        margin-top: 15px !important;
+        text-align: left;
+        padding: 18px 0px 3px 12px;
+    }
+
+    .additional-info p {
+        margin: 7px 0 0 12px;
+    }
+
+    .ingredient-item {
+        padding: 0;
+    }
+
+    .ingredient-item div {
+        margin: 0;
+    }
+
+    .ingredient-item .ingredient-header {
+        padding: 25px 0px 2px;
+        margin-bottom: 28px;
+    }
+</style>
+
 <script>
     $(document).ready(function () {
         var products = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
-                url: '/dashboard.json',
-                cache: false
+                url: '/dashboard/index.json',
+                cache: false,
+                transform: function (response) {
+                    return response.map(function (product) {
+                        return { name: product.name };
+                    });
+                }
             }
         });
 
-        $('#product-search').typeahead(null, {
+        products.initialize();
+
+        $('#product-search').typeahead({
+            minLength: 1,
+            highlight: true
+        }, {
             name: 'products',
             display: 'name',
             source: products
         });
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            }).format(value);
+        }
 
         $('#search-button').on('click', function () {
             var query = $('#product-search').val();
@@ -33,23 +93,36 @@
                     if (data.length > 0) {
                         data.forEach(function (product) {
                             var listItem = `
-                        <div class="ingredient-item-group">
-                            <div class="ingredient-title">${product.name} Ingredients</div>
-                            <div class="ingredients">
+                            <div class="ingredient-item-group">
+                                <div class="ingredient-title">${product.name} Ingredients</div>
+                                <div class="ingredients">
                         `;
                             product.ingredients.forEach(function (ingredient) {
                                 listItem += `
                                 <div class="ingredient-item">
-                                    <div>${ingredient.supplier_product.name}</div>
-                                    <div><i>Supplier</i>: ${ingredient.supplier_product.company.company_name}</div>
-                                </div>
+                                    <div class="ingredient-header">
+                                        <div>${ingredient.supplier_product.name}</div>
+                                        <div><i>Supplier</i>: <a class="company-link">${ingredient.supplier_product.company.company_name}</a></div>
+                                    </div>
+                                    <div class="additional-info">
+                                        <p>Current price: ${formatCurrency(ingredient.supplier_product.price)
+                                    }</p >
+                        <p>SKU: ${ingredient.supplier_product.sku}</p>
+                                    </div >
+                                </div >
                             `;
                             });
                             listItem += `
-                            </div>
-                        </div>
+                                </div >
+                            </div >
                         `;
                             $('#search-results').append(listItem);
+                        });
+
+                        // Use event delegation to handle click events
+                        $('#search-results').on('click', '.company-link', function (e) {
+                            console.log('Link clicked:', $(this).text());
+                            $(this).closest('.ingredient-item').find('.additional-info').toggle();
                         });
                     } else {
                         $('#search-results').append('<div class="ingredient-item">No results found</div>');
@@ -58,5 +131,4 @@
             });
         });
     });
-
 </script>

@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: @products_with_ingredients.as_json(include: { ingredients: { include: { supplier_product: { include: :company } } } })
+        render json: @products_with_ingredients.select(:name).distinct.as_json
       end
     end
   end

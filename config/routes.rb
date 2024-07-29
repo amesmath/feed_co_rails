@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'products/index'
   get 'products/show'
   get 'dashboard/index'
+  get 'dashboard/index', to: 'dashboard#index', defaults: { format: :json } # Ensure JSON format for index
   get 'dashboard/search', to: 'dashboard#search'
   devise_for :users
   root 'dashboard#index'

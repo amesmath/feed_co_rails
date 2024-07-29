@@ -78,6 +78,7 @@ body {
   padding: 10px 0;
   background: #ffffff;
   color: #000;
+  font-size: 14px;
 }
 
 .low-stock_productAmount {
@@ -144,6 +145,9 @@ body {
   border: 1px solid lightgrey;
   border-radius: 7px;
   margin: 22px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
 .ingredient-item-group {
@@ -154,11 +158,13 @@ body {
 
 .ingredient-item {
   padding: 10px;
-  margin: 10px 0;
+  margin: 6px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #fff;
   width: 83%;
+  min-width: 250px;
+  text-align: center;
 }
 
 .ingredient-title {
@@ -176,11 +182,12 @@ body {
 }
 
 .ingredients {
-  margin-left: 20px;
-  padding-left: 10px;
   border: none;
   text-align: left;
   margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #search-results {
