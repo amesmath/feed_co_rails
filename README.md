@@ -31,7 +31,7 @@
     rails db:migrate
     ```
 
-    If you have seed data, you can load it:
+    I have extensive Feed Merchandising seed data in teh seeds.rb file which you can use:
     ```sh
     rails db:seed
     ```
