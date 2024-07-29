@@ -20,12 +20,12 @@
           <div id="companies_pie_chart"></div>
         </div>
         <div class="widget">
-          <h3>Ingredients Lookup</h3>
+          <h3>Product Lookup</h3>
           <%= render 'ingredient_lookup' %>
         </div>
         <div class="widget">
-          <h2>Top Products</h2>
-          <!-- Insert graph here -->
+          <h2>Top Sales</h2>
+          <div id="products_bar_chart" style="width:100%; height:400px;"></div>
         </div>
       </div>
       <div class="widget-row">
@@ -43,6 +43,63 @@
 </html>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    Highcharts.chart('products_bar_chart', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: ''
+      },
+      xAxis: {
+        categories: [
+        <% @top_products.each do | product | %>
+          '<%= product.name %>',
+        <% end %>
+      ],
+      title: {
+        text: 'Products'
+      }
+    },
+      yAxis: {
+      min: 0,
+      title: {
+        text: 'Sales Count',
+        align: 'high'
+      },
+      labels: {
+        overflow: 'justify'
+      }
+    },
+      tooltip: {
+      valueSuffix: ' units'
+    },
+      plotOptions: {
+      bar: {
+        dataLabels: {
+          enabled: true
+        }
+      }
+    },
+      legend: {
+      reversed: false
+    },
+      credits: {
+      enabled: false
+    },
+      series: [{
+        name: 'Sales Count',
+        colorByPoint: true,
+        data: [
+        <% @top_products.each do | product | %>
+          <%= product.sales_count %>,
+        <% end %>
+      ]
+    }]
+  });
+});
+
+
   document.addEventListener("DOMContentLoaded", function () {
     Highcharts.chart('companies_pie_chart', {
       chart: {

@@ -9,6 +9,10 @@ class DashboardController < ApplicationController
     @products_with_ingredients = Product.where(company_id: internal_company_ids)
                                         .includes(ingredients: { supplier_product: :company })
 
+    @top_products = Product.where(company_id: internal_company_ids)
+                           .order(sales_count: :desc)
+                           .limit(12)
+
     respond_to do |format|
       format.html
       format.json do
