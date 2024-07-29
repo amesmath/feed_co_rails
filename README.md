@@ -1,5 +1,5 @@
 # FeedCo
-### POC Rails Applicaiton for Feed Merchandising Company 
+### POC Rails Application for Feed Merchandising Company
 
 ![Logo](https://github.com/amesmath/feed_co_rails/blob/main/app/assets/images/feed_co_desktop.png)
 
