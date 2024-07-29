@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
     @companies = with_more_than_ten_products
     @low_stock_products = Product.where(company_id: internal_company_ids)
                                  .order(:stock_quantity)
-                                 .limit(3)
+                                 .limit(5)
     @products_with_ingredients = Product.where(company_id: internal_company_ids)
                                         .includes(ingredients: { supplier_product: :company })
 

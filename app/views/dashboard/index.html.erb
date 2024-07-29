@@ -51,6 +51,17 @@
       title: {
         text: ''
       },
+      plotOptions: {
+        pie: {
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: true
+        }
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
       series: [{
         name: 'Products',
         colorByPoint: true,

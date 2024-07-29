@@ -75,8 +75,7 @@ body {
 .low-stock_productItem {
   border-radius: 10px;
   width: 100%;
-  padding: 20px 0;
-  margin: 20px 0;
+  padding: 10px 0;
   background: #ffffff;
   color: #000;
 }
