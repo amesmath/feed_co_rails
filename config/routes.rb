@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'products/index'
   get 'products/show'
   get 'dashboard/index'
+  get 'dashboard/search', to: 'dashboard#search'
   devise_for :users
   root 'dashboard#index'
   resources :products, only: %i[index show]

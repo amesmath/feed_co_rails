@@ -6,7 +6,26 @@ class DashboardController < ApplicationController
     @low_stock_products = Product.where(company_id: internal_company_ids)
                                  .order(:stock_quantity)
                                  .limit(3)
-                                 .includes(ingredients: { supplier_product: :company })
+    @products_with_ingredients = Product.where(company_id: internal_company_ids)
+                                        .includes(ingredients: { supplier_product: :company })
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @products_with_ingredients.as_json(include: { ingredients: { include: { supplier_product: { include: :company } } } })
+      end
+    end
+  end
+
+  def search
+    query = params[:query]
+    @products_with_ingredients = Product.where('name ILIKE ?', "%#{query}%")
+                                        .where(company_id: internal_company_ids)
+                                        .includes(ingredients: { supplier_product: :company })
+
+    render json: @products_with_ingredients.as_json(
+      include: { ingredients: { include: { supplier_product: { include: :company } } } }
+    )
   end
 
   private
@@ -24,7 +43,7 @@ class DashboardController < ApplicationController
 
   def purchase_order_data_for_chart
     # Get all PurchaseOrders where company_id is one of the internal_company_ids
-    purchase_orders = PurchaseOrder.where(company_id: internal_company_ids).limit(140)
+    purchase_orders = PurchaseOrder.where(company_id: internal_company_ids).limit(30)
 
     # Initialize a hash to store the purchase order count by product and month
     purchase_order_data = Hash.new { |hash, key| hash[key] = Array.new(6, 0) }

@@ -11,18 +11,6 @@
                 Current Stock: <span class="low-stock_productAmount">
                     <%= product.stock_quantity %>
                 </span> kg<br>
-                <div class="tooltip">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <% product.ingredients.each do |ingredient| %>
-                            <li>
-                                <%= ingredient.supplier_product.name %> (Supplier: <%=
-                                        ingredient.supplier_product.company.company_name %>
-                                        )
-                            </li>
-                            <% end %>
-                    </ul>
-                </div>
             </div>
             <% end %>
     </div>

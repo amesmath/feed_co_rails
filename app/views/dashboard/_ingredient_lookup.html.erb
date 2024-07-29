@@ -1,0 +1,62 @@
+<div>
+    <input type="text" id="product-search" placeholder="Search for a product...">
+    <button id="search-button">Search</button>
+</div>
+
+<div class="ingredients-results" id="search-results"></div>
+
+<script>
+    $(document).ready(function () {
+        var products = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '/dashboard.json',
+                cache: false
+            }
+        });
+
+        $('#product-search').typeahead(null, {
+            name: 'products',
+            display: 'name',
+            source: products
+        });
+
+        $('#search-button').on('click', function () {
+            var query = $('#product-search').val();
+            $.ajax({
+                url: '/dashboard/search',
+                method: 'GET',
+                data: { query: query },
+                success: function (data) {
+                    $('#search-results').empty();
+                    if (data.length > 0) {
+                        data.forEach(function (product) {
+                            var listItem = `
+                        <div class="ingredient-item">
+                            <div class="ingredient-title">${product.name} Ingredients</div>
+                            <div class="ingredients">
+                        `;
+                            product.ingredients.forEach(function (ingredient) {
+                                listItem += `
+                                <div class="ingredient-item">
+                                    <div>${ingredient.supplier_product.name}</div>
+                                    <div><i>Supplier</i>: ${ingredient.supplier_product.company.company_name}</div>
+                                </div>
+                            `;
+                            });
+                            listItem += `
+                            </div>
+                        </div>
+                        `;
+                            $('#search-results').append(listItem);
+                        });
+                    } else {
+                        $('#search-results').append('<div class="ingredient-item">No results found</div>');
+                    }
+                }
+            });
+        });
+    });
+
+</script>

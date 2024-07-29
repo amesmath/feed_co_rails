@@ -4,6 +4,8 @@
 <head>
   <title>FeedCo</title>
   <%= stylesheet_link_tag 'application' , media: 'all' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +19,8 @@
           <div id="companies_pie_chart"></div>
         </div>
         <div class="widget">
-          <%= render 'inventory_widget' %>
+          <h3>Ingredients Lookup</h3>
+          <%= render 'ingredient_lookup' %>
         </div>
         <div class="widget">
           <h2>Top Products</h2>
@@ -29,8 +32,7 @@
           <div id="container"></div>
         </div>
         <div class="widget">
-          <h3>Cost Calculator</h3>
-          <!-- Insert graph here -->
+          <%= render 'inventory_widget' %>
         </div>
       </div>
     </div>

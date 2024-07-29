@@ -74,16 +74,11 @@ body {
 
 .low-stock_productItem {
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   padding: 20px 0;
   margin: 20px 0;
-  background: #f2f2f2;
+  background: #ffffff;
   color: #000;
-}
-.low-stock_productItem:hover {
-  background-color: #ebebeb;
-  cursor: pointer;
 }
 
 .low-stock_productAmount {
@@ -142,6 +137,54 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.ingredients-results {
+  overflow-y: scroll;
+  height: 500px;
+}
+
+.ingredient-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.ingredient-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredient-item div {
+  margin: 2px 0;
+}
+
+.ingredient-item i {
+  color: #555;
+}
+
+.ingredients {
+  margin-left: 20px;
+  padding-left: 10px;
+  border-left: 1px solid #ddd;
+  text-align: left;
+}
+
+#search-results {
+  overflow: auto;
+}
+
+#search-results::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#search-results {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
 }
 
 
