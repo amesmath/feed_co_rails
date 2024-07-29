@@ -31,7 +31,7 @@
     rails db:migrate
     ```
 
-    I have extensive Feed Merchandising seed data in the seeds.rb file which you can use:
+    There is extensive Feed Merchandising seed data in the seeds.rb file:
     ```sh
     rails db:seed
     ```
