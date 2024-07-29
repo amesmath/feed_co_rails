@@ -16,7 +16,8 @@
                     <ul>
                         <% product.ingredients.each do |ingredient| %>
                             <li>
-                                <%= ingredient.product.name %> (Supplier: <%= ingredient.product.company.company_name %>
+                                <%= ingredient.supplier_product.name %> (Supplier: <%=
+                                        ingredient.supplier_product.company.company_name %>
                                         )
                             </li>
                             <% end %>

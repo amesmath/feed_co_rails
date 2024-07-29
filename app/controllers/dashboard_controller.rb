@@ -3,10 +3,10 @@ class DashboardController < ApplicationController
   def index
     @purchase_order_data = purchase_order_data_for_chart
     @companies = with_more_than_ten_products
-    @low_stock_products = Product.where('company_id IN (?)', internal_company_ids)
+    @low_stock_products = Product.where(company_id: internal_company_ids)
                                  .order(:stock_quantity)
                                  .limit(3)
-                                 .includes(ingredients: { product: :company })
+                                 .includes(ingredients: { supplier_product: :company })
   end
 
   private
