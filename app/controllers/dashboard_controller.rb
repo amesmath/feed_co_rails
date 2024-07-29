@@ -46,14 +46,17 @@ class DashboardController < ApplicationController
   end
 
   def purchase_order_data_for_chart
-    @purchase_orders = PurchaseOrder.where(company_id: internal_company_ids).limit(120)
+    # Get purchase orders for the last 3 months
+    start_date = 3.months.ago.to_date
+    end_date = Date.today
+
+    # Group by date and count the number of orders per day
+    purchase_orders = PurchaseOrder
+                      .where(company_id: internal_company_ids, order_date: start_date..end_date)
+                      .group('DATE(order_date)')
+                      .count
 
     # Format data for Highcharts
-    @chart_data = @purchase_orders.map do |po|
-      {
-        name: po.created_at.strftime('%Y-%m-%d'), # Assuming purchase order has a created_at attribute
-        data: po.total_amount # Assuming purchase order has an amount attribute
-      }
-    end
+    @chart_data = purchase_orders.map { |date, count| { name: date.strftime('%Y-%m-%d'), data: count } }
   end
 end

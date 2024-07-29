@@ -137,13 +137,14 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     const chartData = <%= @chart_data.to_json.html_safe %>;
+    console.log('chartData:', chartData)
 
     Highcharts.chart('purchase-orders-chart', {
       chart: {
         type: 'line'
       },
       title: {
-        text: 'Purchase Orders Over Time'
+        text: 'Purchase Orders (Past 30 Days)'
       },
       xAxis: {
         categories: chartData.map(data => data.name),
@@ -153,12 +154,12 @@
       },
       yAxis: {
         title: {
-          text: 'Amount'
+          text: 'Count'
         }
       },
       series: [{
-        name: 'Amount',
-        data: chartData.map(data => parseFloat(data.data))
+        name: 'Number of Orders',
+        data: chartData.map(data => data.data)
       }]
     });
   });
