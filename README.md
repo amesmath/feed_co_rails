@@ -1,24 +1,52 @@
-# README
+# FeedCo
+### POC Rails Applicaiton for Feed Merchandising Company 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Logo](https://github.com/amesmath/feed_co_rails/blob/main/app/assets/images/feed_co_desktop.png)
 
-Things you may want to cover:
 
-* Ruby version
+### Installation
 
-* System dependencies
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/amesmath/feed_co_rails.git
+    cd yourrepository
+    ```
 
-* Configuration
+2. **Install Ruby dependencies**:
+    Ensure you have the correct Ruby version installed. Check the `.ruby-version` file if it exists. Use a version manager like `rbenv` or `rvm` to install the required Ruby version.
+    ```sh
+    rbenv install <ruby-version>  # If using rbenv
+    rvm install <ruby-version>    # If using rvm
+    ```
 
-* Database creation
+    Install the gems specified in the `Gemfile`:
+    ```sh
+    bundle install
+    ```
 
-* Database initialization
+3. **Set up the database**:
+    Create and migrate the database:
+    ```sh
+    rails db:create
+    rails db:migrate
+    ```
 
-* How to run the test suite
+    If you have seed data, you can load it:
+    ```sh
+    rails db:seed
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+4. **Install JavaScript dependencies**:
+    If your application uses a JavaScript package manager like Yarn:
+    ```sh
+    yarn install
+    ```
 
-* Deployment instructions
+5. **Start the Rails server**:
+    ```sh
+    rails server
+    ```
 
-* ...
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
