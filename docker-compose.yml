@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: david_
+      POSTGRES_PASSWORD: password1
+      POSTGRES_DB: feed_town_development
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: ["rails", "server", "-b", "0.0.0.0"]
+    volumes:
+      - ".:/app"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_USERNAME: david_
+      DATABASE_PASSWORD: password1
+      DATABASE_HOST: db
+
+volumes:
+  postgres_data:

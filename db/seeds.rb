@@ -7,6 +7,9 @@ require 'securerandom'
 [Company, Product, Ingredient, Inventory, Pricing, Promotion, Sale, Forecast, Feedback,
  Merchandising, PurchaseOrder, Region, SalesTarget, Store, User, Service].each(&:destroy_all)
 
+User.create(email: 'demo@example.com', password: 'password', password_confirmation: 'password')
+
+
 # Method to generate a unique SKU with a random suffix
 def generate_unique_sku
   "#{SecureRandom.alphanumeric(12)}"
