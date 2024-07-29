@@ -1,17 +1,30 @@
 # db/seeds.rb
 
 require 'faker'
+require 'securerandom'
 
 # Clear existing data
 [Company, Product, Ingredient, Inventory, Pricing, Promotion, Sale, Forecast, Feedback,
  Merchandising, PurchaseOrder, Region, SalesTarget, Store, User, Service].each(&:destroy_all)
+
+# Method to generate a unique SKU with a random suffix
+def generate_unique_sku
+  "#{SecureRandom.alphanumeric(12)}"
+end
+
+# Method to randomize a value within +/- 20%
+def randomize_value(value)
+  min_value = value * 0.8
+  max_value = value * 1.2
+  rand(min_value..max_value)
+end
 
 all_supplier_products = {
   101 => {
     name: 'Yellow Corn',
     description:
       'High-quality yellow corn for animal feed and milling purposes.',
-    sku: 'YC123',
+    sku: generate_unique_sku,
     price: 150,
     cost: 100,
     stock_quantity: 1000,
@@ -33,7 +46,7 @@ all_supplier_products = {
     name: 'White Corn',
     description:
       'Premium white corn ideal for various food products and animal feed.',
-    sku: 'WC456',
+    sku: generate_unique_sku,
     price: 160,
     cost: 110,
     stock_quantity: 800,
@@ -55,7 +68,7 @@ all_supplier_products = {
     name: 'Soybeans',
     description:
       'High-protein soybeans suitable for livestock feed and oil extraction.',
-    sku: 'SB789',
+    sku: generate_unique_sku,
     price: 200,
     cost: 150,
     stock_quantity: 1200,
@@ -76,7 +89,7 @@ all_supplier_products = {
   104 => {
     name: 'Wheat Grain',
     description: 'Top-grade wheat grain for milling and feed applications.',
-    sku: 'WG321',
+    sku: generate_unique_sku,
     price: 180,
     cost: 130,
     stock_quantity: 1100,
@@ -98,7 +111,7 @@ all_supplier_products = {
     name: 'Barley Grain',
     description:
       'High-quality barley grain for brewing, feed, and food products.',
-    sku: 'BG654',
+    sku: generate_unique_sku,
     price: 170,
     cost: 120,
     stock_quantity: 900,
@@ -119,7 +132,7 @@ all_supplier_products = {
   106 => {
     name: 'Oats Grain',
     description: 'Premium oats grain for feed and food processing.',
-    sku: 'OG987',
+    sku: generate_unique_sku,
     price: 190,
     cost: 140,
     stock_quantity: 850,
@@ -140,7 +153,7 @@ all_supplier_products = {
   107 => {
     name: 'Sorghum',
     description: 'Versatile sorghum grain for animal feed and food products.',
-    sku: 'SG111',
+    sku: generate_unique_sku,
     price: 175,
     cost: 125,
     stock_quantity: 950,
@@ -161,7 +174,7 @@ all_supplier_products = {
   108 => {
     name: 'Canola Seeds',
     description: 'High-oil content canola seeds for oil extraction and feed.',
-    sku: 'CS222',
+    sku: generate_unique_sku,
     price: 210,
     cost: 160,
     stock_quantity: 700,
@@ -182,7 +195,7 @@ all_supplier_products = {
   109 => {
     name: 'Sunflower Seeds',
     description: 'Nutrient-rich sunflower seeds for oil extraction and feed.',
-    sku: 'SS333',
+    sku: generate_unique_sku,
     price: 220,
     cost: 170,
     stock_quantity: 600,
@@ -204,7 +217,7 @@ all_supplier_products = {
     name: 'Flaxseed',
     description:
       'Nutrient-rich flaxseed for livestock feed and oil extraction.',
-    sku: 'FS123',
+    sku: generate_unique_sku,
     price: 230,
     cost: 180,
     stock_quantity: 500,
@@ -225,7 +238,7 @@ all_supplier_products = {
   111 => {
     name: 'Rice Bran',
     description: 'High-energy rice bran for livestock feed.',
-    sku: 'RB456',
+    sku: generate_unique_sku,
     price: 190,
     cost: 140,
     stock_quantity: 700,
@@ -246,7 +259,7 @@ all_supplier_products = {
   112 => {
     name: 'Cottonseed',
     description: 'High-fiber cottonseed for dairy and beef cattle feed.',
-    sku: 'CS789',
+    sku: generate_unique_sku,
     price: 250,
     cost: 200,
     stock_quantity: 400,
@@ -267,7 +280,7 @@ all_supplier_products = {
   113 => {
     name: 'Beet Pulp',
     description: 'Fiber-rich beet pulp for horse and cattle feed.',
-    sku: 'BP321',
+    sku: generate_unique_sku,
     price: 160,
     cost: 120,
     stock_quantity: 600,
@@ -288,7 +301,7 @@ all_supplier_products = {
   114 => {
     name: 'Distillers Dried Grains (DDGs)',
     description: 'High-protein DDGs for livestock feed.',
-    sku: 'DDG654',
+    sku: generate_unique_sku,
     price: 180,
     cost: 130,
     stock_quantity: 800,
@@ -309,7 +322,7 @@ all_supplier_products = {
   115 => {
     name: 'Whole Corn',
     description: 'Whole corn kernels for animal feed and milling.',
-    sku: 'WC987',
+    sku: generate_unique_sku,
     price: 150,
     cost: 100,
     stock_quantity: 1000,
@@ -330,7 +343,7 @@ all_supplier_products = {
   116 => {
     name: 'Cracked Corn',
     description: 'Cracked corn for easier consumption by livestock.',
-    sku: 'CC111',
+    sku: generate_unique_sku,
     price: 160,
     cost: 110,
     stock_quantity: 900,
@@ -351,7 +364,7 @@ all_supplier_products = {
   117 => {
     name: 'Rolled Oats',
     description: 'Rolled oats for animal feed and food products.',
-    sku: 'RO222',
+    sku: generate_unique_sku,
     price: 190,
     cost: 140,
     stock_quantity: 850,
@@ -372,7 +385,7 @@ all_supplier_products = {
   118 => {
     name: 'Millet',
     description: 'Nutrient-rich millet for bird feed and food products.',
-    sku: 'ML333',
+    sku: generate_unique_sku,
     price: 210,
     cost: 160,
     stock_quantity: 600,
@@ -393,7 +406,7 @@ all_supplier_products = {
   119 => {
     name: 'Vitamin A Supplement',
     description: 'Vitamin A supplement for livestock nutrition.',
-    sku: 'VA444',
+    sku: generate_unique_sku,
     price: 300,
     cost: 250,
     stock_quantity: 300,
@@ -415,7 +428,7 @@ all_supplier_products = {
     name: 'Vitamin D3 Supplement',
     description:
       'A high-quality Vitamin D3 supplement used to enhance animal nutrition.',
-    sku: 'VITD3-001',
+    sku: generate_unique_sku,
     price: 50,
     cost: 40,
     stock_quantity: 200,
@@ -436,7 +449,7 @@ all_supplier_products = {
   121 => {
     name: 'Vitamin E Supplement',
     description: 'A premium Vitamin E supplement to boost animal health.',
-    sku: 'VITE-001',
+    sku: generate_unique_sku,
     price: 45,
     cost: 35,
     stock_quantity: 180,
@@ -457,7 +470,7 @@ all_supplier_products = {
   122 => {
     name: 'Calcium Carbonate',
     description: 'Essential calcium carbonate supplement for livestock feed.',
-    sku: 'CALC-001',
+    sku: generate_unique_sku,
     price: 30,
     cost: 25,
     stock_quantity: 500,
@@ -478,7 +491,7 @@ all_supplier_products = {
   123 => {
     name: 'Sodium Selenite',
     description: 'High-purity sodium selenite for animal feed applications.',
-    sku: 'SODSEL-001',
+    sku: generate_unique_sku,
     price: 75,
     cost: 65,
     stock_quantity: 150,
@@ -499,7 +512,7 @@ all_supplier_products = {
   124 => {
     name: 'Copper Sulfate',
     description: 'Effective copper sulfate for boosting livestock health.',
-    sku: 'COPSUL-001',
+    sku: generate_unique_sku,
     price: 55,
     cost: 45,
     stock_quantity: 250,
@@ -520,7 +533,7 @@ all_supplier_products = {
   125 => {
     name: 'Zinc Oxide',
     description: 'High-grade zinc oxide for animal nutritional needs.',
-    sku: 'ZNOX-001',
+    sku: generate_unique_sku,
     price: 65,
     cost: 55,
     stock_quantity: 300,
@@ -541,7 +554,7 @@ all_supplier_products = {
   126 => {
     name: 'Manganese Sulfate',
     description: 'Essential manganese sulfate for animal nutrition.',
-    sku: 'MANSUL-001',
+    sku: generate_unique_sku,
     price: 70,
     cost: 60,
     stock_quantity: 170,
@@ -562,7 +575,7 @@ all_supplier_products = {
   127 => {
     name: 'Potassium Iodide',
     description: 'High-purity potassium iodide for feed applications.',
-    sku: 'POTIOD-001',
+    sku: generate_unique_sku,
     price: 80,
     cost: 70,
     stock_quantity: 130,
@@ -584,7 +597,7 @@ all_supplier_products = {
     name: 'Cobalt Carbonate',
     description:
       'Cobalt carbonate for animal feed to enhance nutritional value.',
-    sku: 'COBCARB-001',
+    sku: generate_unique_sku,
     price: 85,
     cost: 75,
     stock_quantity: 120,
@@ -606,7 +619,7 @@ all_supplier_products = {
     name: 'DL-Methionine',
     description:
       'DL-Methionine amino acid supplement for enhancing feed quality.',
-    sku: 'DLMET-001',
+    sku: generate_unique_sku,
     price: 95,
     cost: 85,
     stock_quantity: 110,
@@ -628,7 +641,7 @@ all_supplier_products = {
     name: 'L-Lysine',
     description:
       'An essential amino acid used in animal feed for protein synthesis.',
-    sku: 'LLYS-001',
+    sku: generate_unique_sku,
     price: 12.5,
     cost: 10,
     stock_quantity: 200,
@@ -650,7 +663,7 @@ all_supplier_products = {
     name: 'Thiamine Mononitrate (Vitamin B1)',
     description:
       'A vitamin supplement used in animal feed to support metabolic functions.',
-    sku: 'THMN-002',
+    sku: generate_unique_sku,
     price: 30,
     cost: 25,
     stock_quantity: 150,
@@ -672,7 +685,7 @@ all_supplier_products = {
     name: 'Riboflavin (Vitamin B2)',
     description:
       'A vitamin supplement for animal feed to aid in energy production and growth.',
-    sku: 'RIBF-003',
+    sku: generate_unique_sku,
     price: 25,
     cost: 20,
     stock_quantity: 180,
@@ -694,7 +707,7 @@ all_supplier_products = {
     name: 'Niacin (Vitamin B3)',
     description:
       'A vitamin supplement used to improve animal metabolism and health.',
-    sku: 'NIAC-004',
+    sku: generate_unique_sku,
     price: 28,
     cost: 22,
     stock_quantity: 120,
@@ -716,7 +729,7 @@ all_supplier_products = {
     name: 'Pantothenic Acid (Vitamin B5)',
     description:
       'A vitamin supplement for animal feed to enhance growth and feed efficiency.',
-    sku: 'PANT-005',
+    sku: generate_unique_sku,
     price: 35,
     cost: 28,
     stock_quantity: 100,
@@ -738,7 +751,7 @@ all_supplier_products = {
     name: 'Pyridoxine Hydrochloride (Vitamin B6)',
     description:
       'A vitamin supplement used to support nervous system and immune function in animals.',
-    sku: 'PYRH-006',
+    sku: generate_unique_sku,
     price: 40,
     cost: 32,
     stock_quantity: 90,
@@ -760,7 +773,7 @@ all_supplier_products = {
     name: 'Biotin (Vitamin B7)',
     description:
       'A vitamin supplement to support animal health, particularly skin, coat, and hoof condition.',
-    sku: 'BIOT-007',
+    sku: generate_unique_sku,
     price: 50,
     cost: 40,
     stock_quantity: 80,
@@ -782,7 +795,7 @@ all_supplier_products = {
     name: 'Folic Acid (Vitamin B9)',
     description:
       'A vitamin supplement that aids in cell growth and development in animals.',
-    sku: 'FOLC-008',
+    sku: generate_unique_sku,
     price: 45,
     cost: 36,
     stock_quantity: 110,
@@ -804,7 +817,7 @@ all_supplier_products = {
     name: 'Cyanocobalamin (Vitamin B12)',
     description:
       'A vitamin supplement essential for animal metabolism and nerve function.',
-    sku: 'CYAN-009',
+    sku: generate_unique_sku,
     price: 60,
     cost: 48,
     stock_quantity: 70,
@@ -826,7 +839,7 @@ all_supplier_products = {
     name: 'Alfalfa Hay',
     description:
       'A high-quality forage for livestock, rich in protein and fiber.',
-    sku: 'ALFH-010',
+    sku: generate_unique_sku,
     price: 200,
     cost: 150,
     stock_quantity: 50,
@@ -847,7 +860,7 @@ all_supplier_products = {
   140 => {
     name: 'Timothy Hay',
     description: 'High-quality timothy hay, ideal for dairy cattle feed.',
-    sku: 'TH-001',
+    sku: generate_unique_sku,
     price: 200,
     cost: 150,
     stock_quantity: 5000,
@@ -868,7 +881,7 @@ all_supplier_products = {
   141 => {
     name: 'Agricultural Lime',
     description: 'Agricultural lime to improve soil quality and pH levels.',
-    sku: 'AL-001',
+    sku: generate_unique_sku,
     price: 50,
     cost: 35,
     stock_quantity: 10_000,
@@ -889,7 +902,7 @@ all_supplier_products = {
   142 => {
     name: 'Dolomitic Lime',
     description: 'Dolomitic lime to supply magnesium and calcium to the soil.',
-    sku: 'DL-001',
+    sku: generate_unique_sku,
     price: 55,
     cost: 40,
     stock_quantity: 8000,
@@ -910,7 +923,7 @@ all_supplier_products = {
   143 => {
     name: 'Gypsum Powder',
     description: 'Gypsum powder to improve soil structure and drainage.',
-    sku: 'GP-001',
+    sku: generate_unique_sku,
     price: 45,
     cost: 30,
     stock_quantity: 12_000,
@@ -931,7 +944,7 @@ all_supplier_products = {
   144 => {
     name: 'Rock Phosphate',
     description: 'Rock phosphate for soil fertilization.',
-    sku: 'RP-001',
+    sku: generate_unique_sku,
     price: 70,
     cost: 55,
     stock_quantity: 6000,
@@ -952,7 +965,7 @@ all_supplier_products = {
   145 => {
     name: 'Bone Meal',
     description: 'Bone meal to provide phosphorus and calcium.',
-    sku: 'BM-001',
+    sku: generate_unique_sku,
     price: 80,
     cost: 60,
     stock_quantity: 4000,
@@ -973,7 +986,7 @@ all_supplier_products = {
   146 => {
     name: 'Blood Meal',
     description: 'Blood meal to provide high nitrogen content.',
-    sku: 'BLM-001',
+    sku: generate_unique_sku,
     price: 90,
     cost: 70,
     stock_quantity: 3000,
@@ -994,7 +1007,7 @@ all_supplier_products = {
   147 => {
     name: 'Fish Emulsion',
     description: 'Fish emulsion for a high-nitrogen, organic fertilizer.',
-    sku: 'FE-001',
+    sku: generate_unique_sku,
     price: 100,
     cost: 80,
     stock_quantity: 2000,
@@ -1015,7 +1028,7 @@ all_supplier_products = {
   148 => {
     name: 'Compost',
     description: 'High-quality compost for soil health and fertility.',
-    sku: 'C-001',
+    sku: generate_unique_sku,
     price: 30,
     cost: 20,
     stock_quantity: 15_000,
@@ -1036,7 +1049,7 @@ all_supplier_products = {
   149 => {
     name: 'Peat Moss',
     description: 'Peat moss for soil conditioning and moisture retention.',
-    sku: 'PM-001',
+    sku: generate_unique_sku,
     price: 40,
     cost: 25,
     stock_quantity: 10_000,
@@ -1058,7 +1071,7 @@ all_supplier_products = {
     name: 'Vermiculite',
     description:
       'A natural mineral used to improve soil aeration and water retention.',
-    sku: 'VERM001',
+    sku: generate_unique_sku,
     price: 25,
     cost: 15,
     stock_quantity: 1000,
@@ -1080,7 +1093,7 @@ all_supplier_products = {
     name: 'Perlite',
     description:
       'A volcanic glass that is used in horticulture to improve soil aeration and drainage.',
-    sku: 'PERL002',
+    sku: generate_unique_sku,
     price: 30,
     cost: 18,
     stock_quantity: 1500,
@@ -1102,7 +1115,7 @@ all_supplier_products = {
     name: 'Humic Acid',
     description:
       'Organic compound used to enhance soil fertility and stimulate plant growth.',
-    sku: 'HUMA003',
+    sku: generate_unique_sku,
     price: 45,
     cost: 25,
     stock_quantity: 800,
@@ -1124,7 +1137,7 @@ all_supplier_products = {
     name: 'Seaweed Extract',
     description:
       'A natural fertilizer derived from seaweed, rich in micronutrients.',
-    sku: 'SEA004',
+    sku: generate_unique_sku,
     price: 50,
     cost: 30,
     stock_quantity: 500,
@@ -1146,7 +1159,7 @@ all_supplier_products = {
     name: 'Green Sand',
     description:
       'A natural mineral fertilizer rich in glauconite, used to improve soil structure and provide trace minerals.',
-    sku: 'GRE005',
+    sku: generate_unique_sku,
     price: 35,
     cost: 20,
     stock_quantity: 1200,
@@ -1168,7 +1181,7 @@ all_supplier_products = {
     name: 'Kelp Meal',
     description:
       'Organic soil amendment made from dried and ground seaweed, used to enrich soil with nutrients.',
-    sku: 'KELP006',
+    sku: generate_unique_sku,
     price: 40,
     cost: 22,
     stock_quantity: 900,
@@ -1190,7 +1203,7 @@ all_supplier_products = {
     name: 'Biochar',
     description:
       'A carbon-rich product used to improve soil fertility and sequester carbon.',
-    sku: 'BIO007',
+    sku: generate_unique_sku,
     price: 55,
     cost: 35,
     stock_quantity: 600,
@@ -1212,7 +1225,7 @@ all_supplier_products = {
     name: 'Mushroom Compost',
     description:
       'A type of organic compost made from the substrate used in mushroom farming, rich in nutrients and beneficial for soil health.',
-    sku: 'MUSH008',
+    sku: generate_unique_sku,
     price: 20,
     cost: 10,
     stock_quantity: 2000,
@@ -1234,7 +1247,7 @@ all_supplier_products = {
     name: 'Cottonseed Meal',
     description:
       'A high-protein feed supplement for livestock, also used as an organic fertilizer.',
-    sku: 'COT009',
+    sku: generate_unique_sku,
     price: 28,
     cost: 16,
     stock_quantity: 1100,
@@ -1256,7 +1269,7 @@ all_supplier_products = {
     name: 'Alfalfa Meal',
     description:
       'A natural fertilizer and animal feed supplement rich in nitrogen, used to enhance soil fertility.',
-    sku: 'ALF010',
+    sku: generate_unique_sku,
     price: 32,
     cost: 18,
     stock_quantity: 950,
@@ -1278,7 +1291,7 @@ all_supplier_products = {
     name: 'Azomite',
     description:
       'A natural mineral product with trace elements beneficial for plant growth.',
-    sku: 'AZM-001',
+    sku: generate_unique_sku,
     price: 50,
     cost: 30,
     stock_quantity: 200,
@@ -1300,7 +1313,7 @@ all_supplier_products = {
     name: 'Urea',
     description:
       'A widely used nitrogen fertilizer essential for plant growth.',
-    sku: 'URE-002',
+    sku: generate_unique_sku,
     price: 20,
     cost: 12,
     stock_quantity: 500,
@@ -1322,7 +1335,7 @@ all_supplier_products = {
     name: 'Ammonium Nitrate',
     description:
       'A high-nitrogen fertilizer used for accelerating plant growth.',
-    sku: 'AMN-003',
+    sku: generate_unique_sku,
     price: 25,
     cost: 15,
     stock_quantity: 300,
@@ -1344,7 +1357,7 @@ all_supplier_products = {
     name: 'Ammonium Sulfate',
     description:
       'A nitrogen fertilizer with sulfur, essential for plant nutrition.',
-    sku: 'AMS-004',
+    sku: generate_unique_sku,
     price: 15,
     cost: 8,
     stock_quantity: 600,
@@ -1366,7 +1379,7 @@ all_supplier_products = {
     name: 'Diammonium Phosphate (DAP)',
     description:
       'A widely used phosphorus fertilizer for promoting root growth.',
-    sku: 'DAP-005',
+    sku: generate_unique_sku,
     price: 30,
     cost: 18,
     stock_quantity: 400,
@@ -1388,7 +1401,7 @@ all_supplier_products = {
     name: 'Monoammonium Phosphate (MAP)',
     description:
       'A phosphorus fertilizer that provides essential nutrients for plant growth.',
-    sku: 'MAP-006',
+    sku: generate_unique_sku,
     price: 28,
     cost: 16,
     stock_quantity: 450,
@@ -1409,7 +1422,7 @@ all_supplier_products = {
   166 => {
     name: 'Potassium Chloride (Muriate of Potash)',
     description: 'A potassium fertilizer essential for crop health and growth.',
-    sku: 'POT-007',
+    sku: generate_unique_sku,
     price: 35,
     cost: 22,
     stock_quantity: 500,
@@ -1431,7 +1444,7 @@ all_supplier_products = {
     name: 'Potassium Sulfate',
     description:
       'A potassium fertilizer with sulfur, promoting plant growth and resilience.',
-    sku: 'POS-008',
+    sku: generate_unique_sku,
     price: 40,
     cost: 25,
     stock_quantity: 300,
@@ -1453,7 +1466,7 @@ all_supplier_products = {
     name: 'Calcium Nitrate',
     description:
       'A calcium fertilizer that provides essential nutrients for plant growth.',
-    sku: 'CAN-009',
+    sku: generate_unique_sku,
     price: 22,
     cost: 14,
     stock_quantity: 400,
@@ -1475,7 +1488,7 @@ all_supplier_products = {
     name: 'Magnesium Sulfate (Epsom Salt)',
     description:
       'A magnesium fertilizer that provides essential nutrients for plant growth.',
-    sku: 'EPS-010',
+    sku: generate_unique_sku,
     price: 18,
     cost: 10,
     stock_quantity: 600,
@@ -1497,7 +1510,7 @@ all_supplier_products = {
     name: 'Triple Superphosphate (TSP)',
     description:
       'A high-phosphorus fertilizer essential for root development and plant growth.',
-    sku: 'TSP-011',
+    sku: generate_unique_sku,
     price: 32,
     cost: 20,
     stock_quantity: 350,
@@ -1519,7 +1532,7 @@ all_supplier_products = {
     name: 'Sulfate of Potash Magnesia (K-Mag)',
     description:
       'A granular fertilizer that provides potassium, magnesium, and sulfur.',
-    sku: 'KMG-001',
+    sku: generate_unique_sku,
     price: 50,
     cost: 30,
     stock_quantity: 500,
@@ -1540,7 +1553,7 @@ all_supplier_products = {
   172 => {
     name: 'Liquid Fish Fertilizer',
     description: 'Organic liquid fertilizer derived from fish by-products.',
-    sku: 'LFF-002',
+    sku: generate_unique_sku,
     price: 40,
     cost: 25,
     stock_quantity: 300,
@@ -1561,7 +1574,7 @@ all_supplier_products = {
   173 => {
     name: 'Liquid Kelp Fertilizer',
     description: 'Organic liquid fertilizer derived from kelp.',
-    sku: 'LKF-003',
+    sku: generate_unique_sku,
     price: 45,
     cost: 28,
     stock_quantity: 400,
@@ -1582,7 +1595,7 @@ all_supplier_products = {
   174 => {
     name: 'Bone Meal Fertilizer',
     description: 'Organic fertilizer rich in phosphorus and calcium.',
-    sku: 'BMF-004',
+    sku: generate_unique_sku,
     price: 35,
     cost: 20,
     stock_quantity: 600,
@@ -1604,7 +1617,7 @@ all_supplier_products = {
     name: 'Blood Meal Fertilizer',
     description:
       'Organic fertilizer high in nitrogen, made from dried animal blood.',
-    sku: 'BMF-005',
+    sku: generate_unique_sku,
     price: 37,
     cost: 22,
     stock_quantity: 450,
@@ -1626,7 +1639,7 @@ all_supplier_products = {
     name: 'Feather Meal',
     description:
       'Organic fertilizer derived from processed chicken feathers, high in nitrogen.',
-    sku: 'FM-006',
+    sku: generate_unique_sku,
     price: 32,
     cost: 18,
     stock_quantity: 550,
@@ -1648,7 +1661,7 @@ all_supplier_products = {
     name: 'Cottonseed Fertilizer',
     description:
       'Organic fertilizer made from cottonseed, rich in nitrogen and potassium.',
-    sku: 'CF-007',
+    sku: generate_unique_sku,
     price: 28,
     cost: 16,
     stock_quantity: 700,
@@ -1670,7 +1683,7 @@ all_supplier_products = {
     name: 'Soybean Meal Fertilizer',
     description:
       'Organic fertilizer made from ground soybeans, high in nitrogen.',
-    sku: 'SMF-008',
+    sku: generate_unique_sku,
     price: 30,
     cost: 18,
     stock_quantity: 650,
@@ -1691,7 +1704,7 @@ all_supplier_products = {
   179 => {
     name: 'Manure-based Compost',
     description: 'Compost made from animal manure, rich in organic matter.',
-    sku: 'MBC-009',
+    sku: generate_unique_sku,
     price: 20,
     cost: 12,
     stock_quantity: 1000,
@@ -1713,7 +1726,7 @@ all_supplier_products = {
     name: 'Worm Castings',
     description:
       'Organic fertilizer made from worm castings, rich in nutrients and beneficial microbes.',
-    sku: 'WC-010',
+    sku: generate_unique_sku,
     price: 55,
     cost: 35,
     stock_quantity: 400,
@@ -1735,7 +1748,7 @@ all_supplier_products = {
     name: 'Hybrid Corn Seed',
     description:
       'High-yielding hybrid corn seed for optimal growth and productivity.',
-    sku: 'HCS-001',
+    sku: generate_unique_sku,
     price: 120,
     cost: 100,
     stock_quantity: 5000,
@@ -1756,7 +1769,7 @@ all_supplier_products = {
   182 => {
     name: 'Non-GMO Soybean Seed',
     description: 'High-quality non-GMO soybean seed for sustainable farming.',
-    sku: 'NGSS-002',
+    sku: generate_unique_sku,
     price: 150,
     cost: 125,
     stock_quantity: 3000,
@@ -1777,7 +1790,7 @@ all_supplier_products = {
   183 => {
     name: 'Wheat Seed',
     description: 'Premium wheat seed for high-quality grain production.',
-    sku: 'WS-003',
+    sku: generate_unique_sku,
     price: 100,
     cost: 85,
     stock_quantity: 4000,
@@ -1798,7 +1811,7 @@ all_supplier_products = {
   184 => {
     name: 'Barley Seed',
     description: 'Superior barley seed for excellent yield and quality.',
-    sku: 'BS-004',
+    sku: generate_unique_sku,
     price: 110,
     cost: 90,
     stock_quantity: 3500,
@@ -1819,7 +1832,7 @@ all_supplier_products = {
   185 => {
     name: 'Oat Seed',
     description: 'Top-quality oat seed for nutritious and robust crop.',
-    sku: 'OS-005',
+    sku: generate_unique_sku,
     price: 95,
     cost: 80,
     stock_quantity: 2500,
@@ -1840,7 +1853,7 @@ all_supplier_products = {
   186 => {
     name: 'Alfalfa Seed',
     description: 'High-performance alfalfa seed for nutritious forage.',
-    sku: 'AS-006',
+    sku: generate_unique_sku,
     price: 130,
     cost: 110,
     stock_quantity: 3200,
@@ -1861,7 +1874,7 @@ all_supplier_products = {
   187 => {
     name: 'Ryegrass Seed',
     description: 'Premium ryegrass seed for lush, durable pastures.',
-    sku: 'RS-007',
+    sku: generate_unique_sku,
     price: 140,
     cost: 120,
     stock_quantity: 2800,
@@ -1882,7 +1895,7 @@ all_supplier_products = {
   188 => {
     name: 'Sorghum Seed',
     description: 'High-yield sorghum seed for sustainable crop production.',
-    sku: 'SS-008',
+    sku: generate_unique_sku,
     price: 125,
     cost: 105,
     stock_quantity: 3300,
@@ -1903,7 +1916,7 @@ all_supplier_products = {
   189 => {
     name: 'Canola Seed',
     description: 'High-quality canola seed for excellent oil production.',
-    sku: 'CS-009',
+    sku: generate_unique_sku,
     price: 145,
     cost: 125,
     stock_quantity: 2900,
@@ -1925,7 +1938,7 @@ all_supplier_products = {
     name: 'Sunflower Seed',
     description:
       'High-yield sunflower seed for nutritious and high-quality oil production.',
-    sku: 'SS-010',
+    sku: generate_unique_sku,
     price: 160,
     cost: 140,
     stock_quantity: 3100,
@@ -1947,7 +1960,7 @@ all_supplier_products = {
     name: 'Clover Seed',
     description:
       'High-quality clover seed for nutritious and productive forage.',
-    sku: 'CLS-001',
+    sku: generate_unique_sku,
     price: 50,
     cost: 40,
     stock_quantity: 1000,
@@ -1968,7 +1981,7 @@ all_supplier_products = {
   192 => {
     name: 'Timothy Grass Seed',
     description: 'Premium timothy grass seed for high-yield forage.',
-    sku: 'TGS-002',
+    sku: generate_unique_sku,
     price: 45,
     cost: 35,
     stock_quantity: 800,
@@ -1989,7 +2002,7 @@ all_supplier_products = {
   193 => {
     name: 'Orchard Grass Seed',
     description: 'Top-quality orchard grass seed for resilient pastures.',
-    sku: 'OGS-003',
+    sku: generate_unique_sku,
     price: 48,
     cost: 38,
     stock_quantity: 900,
@@ -2010,7 +2023,7 @@ all_supplier_products = {
   194 => {
     name: 'Fescue Seed',
     description: 'Durable fescue seed ideal for both pasture and turf.',
-    sku: 'FSS-004',
+    sku: generate_unique_sku,
     price: 42,
     cost: 32,
     stock_quantity: 950,
@@ -2031,7 +2044,7 @@ all_supplier_products = {
   195 => {
     name: 'Bermuda Grass Seed',
     description: 'High-performance bermuda grass seed for warm climates.',
-    sku: 'BGS-005',
+    sku: generate_unique_sku,
     price: 55,
     cost: 45,
     stock_quantity: 700,
@@ -2052,7 +2065,7 @@ all_supplier_products = {
   196 => {
     name: 'Bromegrass Seed',
     description: 'Reliable bromegrass seed for high-yield pastures.',
-    sku: 'BGS-006',
+    sku: generate_unique_sku,
     price: 47,
     cost: 37,
     stock_quantity: 850,
@@ -2073,7 +2086,7 @@ all_supplier_products = {
   197 => {
     name: 'Sainfoin Seed',
     description: 'Nutritious sainfoin seed for improved forage quality.',
-    sku: 'SNS-007',
+    sku: generate_unique_sku,
     price: 50,
     cost: 40,
     stock_quantity: 600,
@@ -2094,7 +2107,7 @@ all_supplier_products = {
   198 => {
     name: 'Sudan Grass Seed',
     description: 'High-yield sudan grass seed for robust forage.',
-    sku: 'SGS-008',
+    sku: generate_unique_sku,
     price: 52,
     cost: 42,
     stock_quantity: 750,
@@ -2115,7 +2128,7 @@ all_supplier_products = {
   199 => {
     name: 'Triticale Seed',
     description: 'High-quality triticale seed for nutritious forage.',
-    sku: 'TRS-009',
+    sku: generate_unique_sku,
     price: 48,
     cost: 38,
     stock_quantity: 800,
@@ -2136,7 +2149,7 @@ all_supplier_products = {
   200 => {
     name: 'Teff Grass Seed',
     description: 'Versatile teff grass seed for both hay and pasture.',
-    sku: 'TGS-010',
+    sku: generate_unique_sku,
     price: 49,
     cost: 39,
     stock_quantity: 650,
@@ -2155,970 +2168,6 @@ all_supplier_products = {
     hazardous_material: false
   }
 }
-
-# Create Internal Companies
-internal_companies = [
-  {
-    first_name: 'John',
-    last_name: 'Williams',
-    email: 'john.williams@westernmilling.com',
-    phone_number: '559-123-4567',
-    company_name: 'Western Milling Agribusiness',
-    address_line1: '123 Agronomy St',
-    address_line2: '',
-    city: 'Hanford',
-    state: 'CA',
-    postal_code: '93230',
-    country: 'USA',
-    is_supplier: false,
-    is_customer: false,
-    is_internal: true,
-    products: [
-      {
-        name: 'Complete Dairy Feed',
-        description: 'High-quality complete feed for dairy cows to ensure optimal milk production and health.',
-        sku: 'WM-DAIRY-001',
-        company_id: 1,
-        price: 25.5,
-        cost: 15.0,
-        stock_quantity: 1000,
-        sales_count: 200,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-15T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 111, weight_needed_per_batch: 1.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 1.2, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 2.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 119, weight_needed_per_batch: 0.05, unit_of_measure: 'kg' },
-          { supplier_product_key: 120, weight_needed_per_batch: 0.03, unit_of_measure: 'kg' },
-          { supplier_product_key: 121, weight_needed_per_batch: 0.04, unit_of_measure: 'kg' },
-          { supplier_product_key: 123, weight_needed_per_batch: 0.01, unit_of_measure: 'kg' },
-          { supplier_product_key: 125, weight_needed_per_batch: 0.02, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Broiler Starter Feed',
-        description: 'Nutrient-rich starter feed for broiler chickens to promote healthy growth.',
-        sku: 'WM-BROILER-002',
-        company_id: 1,
-        price: 18.75,
-        cost: 10.5,
-        stock_quantity: 500,
-        sales_count: 150,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-12T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 130, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 136, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Layer Pellet Feed',
-        description: 'Pelleted feed for layer hens to ensure maximum egg production and quality.',
-        sku: 'WM-LAYER-003',
-        company_id: 1,
-        price: 20.0,
-        cost: 12.0,
-        stock_quantity: 800,
-        sales_count: 300,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-10T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 126, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 129, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 130, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 123, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Hog Grower Feed',
-        description: 'Balanced feed for growing hogs to ensure healthy weight gain.',
-        sku: 'WM-HOG-004',
-        company_id: 1,
-        price: 22.0,
-        cost: 14.0,
-        stock_quantity: 700,
-        sales_count: 180,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-14T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 124, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 126, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Calf Starter Feed',
-        description: 'High-protein starter feed for calves to support early development and growth.',
-        sku: 'WM-CALF-005',
-        company_id: 1,
-        price: 24.0,
-        cost: 16.0,
-        stock_quantity: 600,
-        sales_count: 220,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-13T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 500, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
-          { supplier_product_key: 110, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 131, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 136, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 138, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 155, weight_needed_per_batch: 20, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Beef Cattle Feed',
-        description: 'Nutritious feed for beef cattle to promote healthy weight gain and muscle development.',
-        sku: 'WM-BEEF-006',
-        company_id: 1,
-        price: 26.0,
-        cost: 17.0,
-        stock_quantity: 900,
-        sales_count: 250,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-11T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 102, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 70, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 108, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 111, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 113, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Pelleted Sheep Feed',
-        description: 'Complete pelleted feed for sheep to ensure balanced nutrition and health.',
-        sku: 'WM-SHEEP-007',
-        company_id: 1,
-        price: 19.5,
-        cost: 11.5,
-        stock_quantity: 400,
-        sales_count: 100,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-16T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 106, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 109, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 110, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 113, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 121, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 122, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 124, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Goat Feed',
-        description: 'Balanced feed for goats to support overall health and milk production.',
-        sku: 'WM-GOAT-008',
-        company_id: 1,
-        price: 21.0,
-        cost: 13.0,
-        stock_quantity: 350,
-        sales_count: 90,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-17T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 102, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 120, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 116, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 117, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 118, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 119, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 120, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 121, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 122, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 123, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 124, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 125, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Horse Feed',
-        description: 'High-fiber feed for horses to ensure energy, health, and performance.',
-        sku: 'WM-HORSE-009',
-        category_id: 1,
-        company_id: 1,
-        price: 23.0,
-        cost: 15.0,
-        stock_quantity: 750,
-        sales_count: 140,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-18T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
-          { supplier_product_key: 113, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 118, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 119, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 121, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 130, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 137, weight_needed_per_batch: 3, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Rabbit Feed',
-        description: 'Nutrient-dense feed for rabbits to support growth, health, and reproduction.',
-        sku: 'WM-RABBIT-010',
-        category_id: 1,
-        company_id: 1,
-        price: 17.0,
-        cost: 10.0,
-        stock_quantity: 300,
-        sales_count: 110,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-19T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 106, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 158, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 137, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
-          { supplier_product_key: 140, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      }
-    ]
-  },
-  {
-    first_name: 'Samantha',
-    last_name: 'Beckwith',
-    email: 'sam.beckwith@ohkruse.com',
-    phone_number: '559-234-5678',
-    company_name: 'OH Kruse Grain and Milling',
-    address_line1: '456 Feed Ln',
-    address_line2: '',
-    city: 'Visalia',
-    state: 'CA',
-    postal_code: '93291',
-    country: 'USA',
-    is_supplier: false,
-    is_customer: false,
-    is_internal: true,
-    products: [
-      {
-        name: 'Premium Horse Feed',
-        description: 'High-fiber feed specially formulated for horses to ensure peak performance and health.',
-        sku: 'OHK-HORSE-001',
-        category_id: 1,
-        company_id: 2,
-        price: 27.0,
-        cost: 18.0,
-        stock_quantity: 800,
-        sales_count: 120,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-10T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
-          { supplier_product_key: 113, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 136, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Poultry Starter Feed',
-        description: 'Nutrient-rich starter feed for poultry to support rapid and healthy growth.',
-        sku: 'OHK-POULTRY-002',
-        category_id: 1,
-        company_id: 2,
-        price: 19.0,
-        cost: 11.5,
-        stock_quantity: 600,
-        sales_count: 180,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-11T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 102, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 116, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 117, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 119, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 120, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 121, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 122, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 124, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 126, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 130, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 133, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 136, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Rabbit Pellets',
-        description: 'Complete pelleted feed for rabbits to promote overall health and growth.',
-        sku: 'OHK-RABBIT-003',
-        category_id: 1,
-        company_id: 2,
-        price: 16.0,
-        cost: 9.5,
-        stock_quantity: 400,
-        sales_count: 140,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-12T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 103, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 106, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 131, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 133, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 135, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 137, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Organic Layer Feed',
-        description: 'Certified organic feed for layer hens to ensure high-quality egg production.',
-        sku: 'OHK-LAYER-004',
-        category_id: 1,
-        company_id: 2,
-        price: 22.5,
-        cost: 14.0,
-        stock_quantity: 500,
-        sales_count: 160,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-13T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 103, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 101, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 106, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 136, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
-          { supplier_product_key: 137, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
-          { supplier_product_key: 138, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'All-Purpose Goat Feed',
-        description: 'Balanced feed for goats to support health and milk production.',
-        sku: 'OHK-GOAT-005',
-        category_id: 1,
-        company_id: 2,
-        price: 20.0,
-        cost: 12.5,
-        stock_quantity: 350,
-        sales_count: 90,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-14T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 25, unit_of_measure: 'kg' },
-          { supplier_product_key: 102, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 110, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 113, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 125, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 135, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Sheep Pellets',
-        description: 'Nutritious pelleted feed for sheep to ensure balanced growth and health.',
-        sku: 'OHK-SHEEP-006',
-        category_id: 1,
-        company_id: 2,
-        price: 18.0,
-        cost: 10.5,
-        stock_quantity: 450,
-        sales_count: 110,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-15T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 120, unit_of_measure: 'kg' },
-          { supplier_product_key: 159, weight_needed_per_batch: 80, unit_of_measure: 'kg' },
-          { supplier_product_key: 130, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 131, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Swine Grower Feed',
-        description: 'Complete feed for growing swine to promote healthy weight gain.',
-        sku: 'OHK-SWINE-007',
-        category_id: 1,
-        company_id: 2,
-        price: 21.0,
-        cost: 13.0,
-        stock_quantity: 300,
-        sales_count: 70,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-16T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 500, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
-          { supplier_product_key: 121, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 123, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 130, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 137, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 138, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Alpaca Feed',
-        description: 'Specialized feed for alpacas to support overall health and fiber production.',
-        sku: 'OHK-ALPACA-008',
-        category_id: 1,
-        company_id: 2,
-        price: 24.0,
-        cost: 15.0,
-        stock_quantity: 200,
-        sales_count: 60,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-17T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 25, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 108, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 117, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 113, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 126, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 135, weight_needed_per_batch: 0.2, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Dog Maintenance Diet',
-        description: 'Balanced diet for adult dogs to maintain optimal health and energy.',
-        sku: 'OHK-DOG-009',
-        category_id: 1,
-        company_id: 2,
-        price: 30.0,
-        cost: 20.0,
-        stock_quantity: 750,
-        sales_count: 250,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-18T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 7, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 12, unit_of_measure: 'kg' },
-          { supplier_product_key: 114, weight_needed_per_batch: 6, unit_of_measure: 'kg' },
-          { supplier_product_key: 110, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
-          { supplier_product_key: 125, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 124, weight_needed_per_batch: 0.3, unit_of_measure: 'kg' },
-          { supplier_product_key: 131, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
-          { supplier_product_key: 135, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
-          { supplier_product_key: 138, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Cat Premium Diet',
-        description: 'Premium diet for cats to ensure health and vitality.',
-        sku: 'OHK-CAT-010',
-        category_id: 1,
-        company_id: 2,
-        price: 28.0,
-        cost: 18.0,
-        stock_quantity: 500,
-        sales_count: 200,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-19T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 103, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 106, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 110, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
-          { supplier_product_key: 125, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Parrot Maintenance Feed',
-        description: 'Nutritionally complete feed for parrots to maintain their health.',
-        sku: 'OHK-PARROT-011',
-        category_id: 1,
-        company_id: 2,
-        price: 26.0,
-        cost: 16.0,
-        stock_quantity: 300,
-        sales_count: 90,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-20T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 108, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 109, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Hamster Food',
-        description: 'Balanced feed for hamsters to support their health and activity.',
-        sku: 'OHK-HAMSTER-012',
-        category_id: 1,
-        company_id: 2,
-        price: 15.0,
-        cost: 9.0,
-        stock_quantity: 400,
-        sales_count: 130,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-21T00:00:00Z',
-        category: 'Feed',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
-          { supplier_product_key: 108, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 109, weight_needed_per_batch: 1.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 112, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' }
-        ]
-      }
-    ]
-  },
-  {
-    first_name: 'Mike',
-    last_name: 'Burgess',
-    email: 'mike.burgess@westernmilling.com',
-    phone_number: '555-345-6789',
-    company_name: 'Western Milling Fertilizer Operations',
-    address_line1: '789 Fertilizer Blvd',
-    address_line2: '',
-    city: 'Famoso',
-    state: 'CA',
-    postal_code: '93268',
-    country: 'USA',
-    is_supplier: false,
-    is_customer: false,
-    is_internal: true,
-    products: [
-      {
-        name: 'Nitrogen Fertilizer',
-        description: 'High-efficiency nitrogen fertilizer to promote robust plant growth.',
-        sku: 'WMF-NITRO-001',
-        category_id: 2,
-        company_id: 3,
-        price: 45.0,
-        cost: 30.0,
-        stock_quantity: 1000,
-        sales_count: 200,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-15T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 161, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 162, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 163, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 164, weight_needed_per_batch: 12, unit_of_measure: 'kg' },
-          { supplier_product_key: 168, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
-          { supplier_product_key: 169, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Phosphorus Fertilizer',
-        description: 'Essential phosphorus fertilizer to support root development and flowering.',
-        sku: 'WMF-PHOS-002',
-        company_id: 3,
-        price: 50.0,
-        cost: 35.0,
-        stock_quantity: 800,
-        sales_count: 150,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-12T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 164, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 165, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 170, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Potassium Fertilizer',
-        description: 'Potassium-rich fertilizer to enhance plant vigor and disease resistance.',
-        sku: 'WMF-POTASH-003',
-        company_id: 3,
-        price: 48.0,
-        cost: 32.0,
-        stock_quantity: 900,
-        sales_count: 180,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-13T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 166, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 167, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Calcium Nitrate',
-        description: 'Calcium nitrate fertilizer to improve cell wall strength and quality of crops.',
-        sku: 'WMF-CALCIUM-004',
-        company_id: 3,
-        price: 55.0,
-        cost: 37.0,
-        stock_quantity: 700,
-        sales_count: 160,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-14T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 168, weight_needed_per_batch: 45, unit_of_measure: 'kg' },
-          { supplier_product_key: 163, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Magnesium Sulfate',
-        description: 'Magnesium sulfate to aid in photosynthesis and plant nutrient absorption.',
-        sku: 'WMF-MAG-005',
-        company_id: 3,
-        price: 40.0,
-        cost: 28.0,
-        stock_quantity: 600,
-        sales_count: 140,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-16T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 169, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 161, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 162, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 166, weight_needed_per_batch: 25, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Sulfur Fertilizer',
-        description: 'Sulfur fertilizer to enhance enzyme activity and protein synthesis in plants.',
-        sku: 'WMF-SULFUR-006',
-        company_id: 3,
-        price: 35.0,
-        cost: 25.0,
-        stock_quantity: 800,
-        sales_count: 130,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-17T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 163, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 169, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 167, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 168, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Zinc Chelate',
-        description: 'Zinc chelate to prevent zinc deficiency and promote healthy growth.',
-        sku: 'WMF-ZINC-007',
-        company_id: 3,
-        price: 42.0,
-        cost: 29.0,
-        stock_quantity: 500,
-        sales_count: 120,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-18T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 125, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
-          { supplier_product_key: 126, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 128, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Boron Fertilizer',
-        description: 'Boron fertilizer to improve cell wall formation and reproductive development.',
-        sku: 'WMF-BORON-008',
-        company_id: 3,
-        price: 38.0,
-        cost: 26.0,
-        stock_quantity: 400,
-        sales_count: 100,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-19T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 152, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 160, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 173, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Iron Chelate',
-        description: 'Iron chelate to prevent iron chlorosis and ensure healthy green leaves.',
-        sku: 'WMF-IRON-009',
-        company_id: 3,
-        price: 47.0,
-        cost: 33.0,
-        stock_quantity: 300,
-        sales_count: 110,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-20T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 123, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 124, weight_needed_per_batch: 7, unit_of_measure: 'kg' },
-          { supplier_product_key: 125, weight_needed_per_batch: 6, unit_of_measure: 'kg' },
-          { supplier_product_key: 126, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
-          { supplier_product_key: 128, weight_needed_per_batch: 3, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Manganese Sulfate',
-        description: 'Manganese sulfate to aid in photosynthesis and nitrogen assimilation.',
-        sku: 'WMF-MANG-010',
-        company_id: 3,
-        price: 36.0,
-        cost: 24.0,
-        stock_quantity: 350,
-        sales_count: 90,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-21T00:00:00Z',
-        category: 'Fertilizers and Soil Amendments',
-        ingredients: [
-          { supplier_product_key: 126, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
-          { supplier_product_key: 163, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
-          { supplier_product_key: 168, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
-          { supplier_product_key: 170, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
-        ]
-      }
-    ]
-  },
-  {
-    first_name: 'Emily',
-    last_name: 'Banister',
-    email: 'emily.banister@westernmilling.com',
-    phone_number: '555-456-7890',
-    company_name: 'Western Milling Grain Merchandising',
-    address_line1: '101 Grain Rd',
-    address_line2: '',
-    city: 'Hereford',
-    state: 'TX',
-    postal_code: '79045',
-    country: 'USA',
-    is_supplier: false,
-    is_customer: false,
-    is_internal: true,
-    products: [
-      {
-        name: 'Corn',
-        description: 'High-quality corn for various uses, including animal feed and food production.',
-        sku: 'WMG-CORN-001',
-        company_id: 4,
-        price: 6.0,
-        cost: 4.0,
-        stock_quantity: 5000,
-        sales_count: 2000,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-10T00:00:00Z',
-        category: 'Grains',
-        ingredients: [
-          { supplier_product_key: 101, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 102, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 103, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 104, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 115, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 116, weight_needed_per_batch: 30, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Soybeans',
-        description: 'Premium soybeans suitable for animal feed and oil production.',
-        sku: 'WMG-SOY-002',
-        company_id: 4,
-        price: 8.0,
-        cost: 5.0,
-        stock_quantity: 4000,
-        sales_count: 1500,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-11T00:00:00Z',
-        category: 'Grains',
-        ingredients: [
-          { supplier_product_key: 103, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
-          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 121, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
-          { supplier_product_key: 122, weight_needed_per_batch: 1.5, unit_of_measure: 'kg' },
-          { supplier_product_key: 130, weight_needed_per_batch: 25, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Wheat',
-        description: 'Top-grade wheat for baking, animal feed, and other food products.',
-        sku: 'WMG-WHEAT-003',
-        company_id: 4,
-        price: 7.0,
-        cost: 4.5,
-        stock_quantity: 6000,
-        sales_count: 2500,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-12T00:00:00Z',
-        category: 'Grains',
-        ingredients: [
-          { supplier_product_key: 104, weight_needed_per_batch: 500, unit_of_measure: 'kg' },
-          { supplier_product_key: 102, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 101, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 108, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
-        ]
-      },
-      {
-        name: 'Barley',
-        description: 'High-quality barley for brewing, animal feed, and food production.',
-        sku: 'WMG-BARLEY-004',
-        company_id: 4,
-        price: 5.5,
-        cost: 3.5,
-        stock_quantity: 3500,
-        sales_count: 1800,
-        product_type: 'wm_product',
-        last_sale_date: '2024-06-13T00:00:00Z',
-        category: 'Grains',
-        ingredients: [
-          { supplier_product_key: 104, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
-          { supplier_product_key: 105, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
-          { supplier_product_key: 107, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
-          { supplier_product_key: 117, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
-        ]
-      }
-    ]
-  }
-]
-
-# Method to generate random dates within the past and future 3 months
-def random_date_within_3_months
-  start_date = 3.months.ago.to_date
-  end_date = 3.months.from_now.to_date
-  rand(start_date..end_date)
-end
-
-# Method to randomize a value within +/- 20%
-def randomize_value(value)
-  min_value = value * 0.8
-  max_value = value * 1.2
-  rand(min_value..max_value)
-end
-
-internal_companies.each do |company_data|
-  company = Company.create!(
-    first_name: company_data[:first_name],
-    last_name: company_data[:last_name],
-    email: company_data[:email],
-    phone_number: company_data[:phone_number],
-    company_name: company_data[:company_name],
-    address_line1: company_data[:address_line1],
-    address_line2: company_data[:address_line2],
-    city: company_data[:city],
-    state: company_data[:state],
-    postal_code: company_data[:postal_code],
-    country: company_data[:country],
-    is_supplier: company_data[:is_supplier],
-    is_customer: company_data[:is_customer],
-    is_internal: company_data[:is_internal]
-  )
-
-  company_data[:products].each do |product_data|
-    product = company.products.create!(
-      name: product_data[:name],
-      description: product_data[:description],
-      sku: product_data[:sku],
-      price: product_data[:price],
-      cost: product_data[:cost],
-      stock_quantity: product_data[:stock_quantity],
-      sales_count: product_data[:sales_count],
-      product_type: product_data[:product_type],
-      last_sale_date: product_data[:last_sale_date]
-    )
-
-    product_data[:ingredients].each do |ingredient_data|
-      product.ingredients.create!(
-        weight_needed_per_batch: ingredient_data[:weight_needed_per_batch],
-        unit_of_measure: ingredient_data[:unit_of_measure]
-      )
-    end
-
-    # Creating purchase orders for the company
-    20.times do
-      purchase_order = PurchaseOrder.create!(
-        company: company,
-        order_number: Faker::Number.unique.number(digits: 10),
-        order_date: random_date_within_3_months,
-        delivery_date: random_date_within_3_months,
-        total_amount: Faker::Commerce.price(range: 1000..10_000),
-        status: %w[Pending Shipped Delivered Cancelled].sample
-      )
-
-      # Associate random products with the purchase order
-      rand(1..5).times do
-        product = Product.order('RANDOM()').first # Select a random product
-        purchase_order.products << product
-      end
-    end
-  end
-end
 
 # Create Supplier Companies
 supplier_companies = [
@@ -3699,6 +2748,8 @@ supplier_companies = [
   }
 ]
 
+supplier_products_map = {}
+
 supplier_companies.each do |company_data|
   company = Company.create!(
     first_name: company_data[:first_name],
@@ -3722,7 +2773,7 @@ supplier_companies.each do |company_data|
     product = company.products.create!(
       name: product_data[:name],
       description: product_data[:description],
-      sku: product_data[:sku],
+      sku: generate_unique_sku,
       price: randomize_value(product_data[:price]),
       cost: randomize_value(product_data[:cost]),
       stock_quantity: randomize_value(product_data[:stock_quantity]),
@@ -3740,6 +2791,970 @@ supplier_companies.each do |company_data|
       certifications: product_data[:certifications],
       hazardous_material: product_data[:hazardous_material]
     )
+    supplier_products_map[product_key.to_i] = product
+  end
+end
+
+# Create Internal Companies
+internal_companies = [
+  {
+    first_name: 'John',
+    last_name: 'Williams',
+    email: 'john.williams@westernmilling.com',
+    phone_number: '559-123-4567',
+    company_name: 'Western Milling Agribusiness',
+    address_line1: '123 Agronomy St',
+    address_line2: '',
+    city: 'Hanford',
+    state: 'CA',
+    postal_code: '93230',
+    country: 'USA',
+    is_supplier: false,
+    is_customer: false,
+    is_internal: true,
+    products: [
+      {
+        name: 'Complete Dairy Feed',
+        description: 'High-quality complete feed for dairy cows to ensure optimal milk production and health.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 25.5,
+        cost: 15.0,
+        stock_quantity: 1000,
+        sales_count: 200,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-15T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 111, weight_needed_per_batch: 1.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 1.2, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 2.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 119, weight_needed_per_batch: 0.05, unit_of_measure: 'kg' },
+          { supplier_product_key: 120, weight_needed_per_batch: 0.03, unit_of_measure: 'kg' },
+          { supplier_product_key: 121, weight_needed_per_batch: 0.04, unit_of_measure: 'kg' },
+          { supplier_product_key: 123, weight_needed_per_batch: 0.01, unit_of_measure: 'kg' },
+          { supplier_product_key: 125, weight_needed_per_batch: 0.02, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Broiler Starter Feed',
+        description: 'Nutrient-rich starter feed for broiler chickens to promote healthy growth.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 18.75,
+        cost: 10.5,
+        stock_quantity: 500,
+        sales_count: 150,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-12T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 130, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 136, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Layer Pellet Feed',
+        description: 'Pelleted feed for layer hens to ensure maximum egg production and quality.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 20.0,
+        cost: 12.0,
+        stock_quantity: 800,
+        sales_count: 300,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-10T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 126, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 129, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 130, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 123, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Hog Grower Feed',
+        description: 'Balanced feed for growing hogs to ensure healthy weight gain.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 22.0,
+        cost: 14.0,
+        stock_quantity: 700,
+        sales_count: 180,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-14T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 124, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 126, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Calf Starter Feed',
+        description: 'High-protein starter feed for calves to support early development and growth.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 24.0,
+        cost: 16.0,
+        stock_quantity: 600,
+        sales_count: 220,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-13T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 500, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
+          { supplier_product_key: 110, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 131, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 136, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 138, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 155, weight_needed_per_batch: 20, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Beef Cattle Feed',
+        description: 'Nutritious feed for beef cattle to promote healthy weight gain and muscle development.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 26.0,
+        cost: 17.0,
+        stock_quantity: 900,
+        sales_count: 250,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-11T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 102, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 70, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 108, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 111, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 113, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Pelleted Sheep Feed',
+        description: 'Complete pelleted feed for sheep to ensure balanced nutrition and health.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 19.5,
+        cost: 11.5,
+        stock_quantity: 400,
+        sales_count: 100,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-16T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 106, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 109, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 110, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 113, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 121, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 122, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 124, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Goat Feed',
+        description: 'Balanced feed for goats to support overall health and milk production.',
+        sku: generate_unique_sku,
+        company_id: 1,
+        price: 21.0,
+        cost: 13.0,
+        stock_quantity: 350,
+        sales_count: 90,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-17T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 102, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 120, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 116, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 117, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 118, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 119, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 120, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 121, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 122, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 123, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 124, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 125, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Horse Feed',
+        description: 'High-fiber feed for horses to ensure energy, health, and performance.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 1,
+        price: 23.0,
+        cost: 15.0,
+        stock_quantity: 750,
+        sales_count: 140,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-18T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
+          { supplier_product_key: 113, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 118, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 119, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 121, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 130, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 137, weight_needed_per_batch: 3, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Rabbit Feed',
+        description: 'Nutrient-dense feed for rabbits to support growth, health, and reproduction.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 1,
+        price: 17.0,
+        cost: 10.0,
+        stock_quantity: 300,
+        sales_count: 110,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-19T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 106, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 158, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 137, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
+          { supplier_product_key: 140, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      }
+    ]
+  },
+  {
+    first_name: 'Samantha',
+    last_name: 'Beckwith',
+    email: 'sam.beckwith@ohkruse.com',
+    phone_number: '559-234-5678',
+    company_name: 'OH Kruse Grain and Milling',
+    address_line1: '456 Feed Ln',
+    address_line2: '',
+    city: 'Visalia',
+    state: 'CA',
+    postal_code: '93291',
+    country: 'USA',
+    is_supplier: false,
+    is_customer: false,
+    is_internal: true,
+    products: [
+      {
+        name: 'Premium Horse Feed',
+        description: 'High-fiber feed specially formulated for horses to ensure peak performance and health.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 27.0,
+        cost: 18.0,
+        stock_quantity: 800,
+        sales_count: 120,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-10T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
+          { supplier_product_key: 113, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 136, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Poultry Starter Feed',
+        description: 'Nutrient-rich starter feed for poultry to support rapid and healthy growth.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 19.0,
+        cost: 11.5,
+        stock_quantity: 600,
+        sales_count: 180,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-11T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 102, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 116, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 117, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 119, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 120, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 121, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 122, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 124, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 126, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 130, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 133, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 136, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Rabbit Pellets',
+        description: 'Complete pelleted feed for rabbits to promote overall health and growth.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 16.0,
+        cost: 9.5,
+        stock_quantity: 400,
+        sales_count: 140,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-12T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 103, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 106, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 131, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 133, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 135, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 137, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Organic Layer Feed',
+        description: 'Certified organic feed for layer hens to ensure high-quality egg production.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 22.5,
+        cost: 14.0,
+        stock_quantity: 500,
+        sales_count: 160,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-13T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 103, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 101, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 106, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 136, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
+          { supplier_product_key: 137, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
+          { supplier_product_key: 138, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'All-Purpose Goat Feed',
+        description: 'Balanced feed for goats to support health and milk production.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 20.0,
+        cost: 12.5,
+        stock_quantity: 350,
+        sales_count: 90,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-14T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 25, unit_of_measure: 'kg' },
+          { supplier_product_key: 102, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 110, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 113, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 125, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 135, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Sheep Pellets',
+        description: 'Nutritious pelleted feed for sheep to ensure balanced growth and health.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 18.0,
+        cost: 10.5,
+        stock_quantity: 450,
+        sales_count: 110,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-15T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 150, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 120, unit_of_measure: 'kg' },
+          { supplier_product_key: 159, weight_needed_per_batch: 80, unit_of_measure: 'kg' },
+          { supplier_product_key: 130, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 131, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Swine Grower Feed',
+        description: 'Complete feed for growing swine to promote healthy weight gain.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 21.0,
+        cost: 13.0,
+        stock_quantity: 300,
+        sales_count: 70,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-16T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 500, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 300, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 200, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 100, unit_of_measure: 'kg' },
+          { supplier_product_key: 121, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 123, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 130, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 137, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 138, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Alpaca Feed',
+        description: 'Specialized feed for alpacas to support overall health and fiber production.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 24.0,
+        cost: 15.0,
+        stock_quantity: 200,
+        sales_count: 60,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-17T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 25, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 108, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 117, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 113, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 126, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 135, weight_needed_per_batch: 0.2, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Dog Maintenance Diet',
+        description: 'Balanced diet for adult dogs to maintain optimal health and energy.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 30.0,
+        cost: 20.0,
+        stock_quantity: 750,
+        sales_count: 250,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-18T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 7, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 12, unit_of_measure: 'kg' },
+          { supplier_product_key: 114, weight_needed_per_batch: 6, unit_of_measure: 'kg' },
+          { supplier_product_key: 110, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
+          { supplier_product_key: 125, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 124, weight_needed_per_batch: 0.3, unit_of_measure: 'kg' },
+          { supplier_product_key: 131, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
+          { supplier_product_key: 135, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' },
+          { supplier_product_key: 138, weight_needed_per_batch: 0.1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Cat Premium Diet',
+        description: 'Premium diet for cats to ensure health and vitality.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 28.0,
+        cost: 18.0,
+        stock_quantity: 500,
+        sales_count: 200,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-19T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 103, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 106, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 110, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
+          { supplier_product_key: 125, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Parrot Maintenance Feed',
+        description: 'Nutritionally complete feed for parrots to maintain their health.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 26.0,
+        cost: 16.0,
+        stock_quantity: 300,
+        sales_count: 90,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-20T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 108, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 109, weight_needed_per_batch: 1, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Hamster Food',
+        description: 'Balanced feed for hamsters to support their health and activity.',
+        sku: generate_unique_sku,
+        category_id: 1,
+        company_id: 2,
+        price: 15.0,
+        cost: 9.0,
+        stock_quantity: 400,
+        sales_count: 130,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-21T00:00:00Z',
+        category: 'Feed',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
+          { supplier_product_key: 108, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 109, weight_needed_per_batch: 1.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 112, weight_needed_per_batch: 0.5, unit_of_measure: 'kg' }
+        ]
+      }
+    ]
+  },
+  {
+    first_name: 'Mike',
+    last_name: 'Burgess',
+    email: 'mike.burgess@westernmilling.com',
+    phone_number: '555-345-6789',
+    company_name: 'Western Milling Fertilizer Operations',
+    address_line1: '789 Fertilizer Blvd',
+    address_line2: '',
+    city: 'Famoso',
+    state: 'CA',
+    postal_code: '93268',
+    country: 'USA',
+    is_supplier: false,
+    is_customer: false,
+    is_internal: true,
+    products: [
+      {
+        name: 'Nitrogen Fertilizer',
+        description: 'High-efficiency nitrogen fertilizer to promote robust plant growth.',
+        sku: generate_unique_sku,
+        category_id: 2,
+        company_id: 3,
+        price: 45.0,
+        cost: 30.0,
+        stock_quantity: 1000,
+        sales_count: 200,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-15T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 161, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 162, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 163, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 164, weight_needed_per_batch: 12, unit_of_measure: 'kg' },
+          { supplier_product_key: 168, weight_needed_per_batch: 8, unit_of_measure: 'kg' },
+          { supplier_product_key: 169, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Phosphorus Fertilizer',
+        description: 'Essential phosphorus fertilizer to support root development and flowering.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 50.0,
+        cost: 35.0,
+        stock_quantity: 800,
+        sales_count: 150,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-12T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 164, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 165, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 170, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Potassium Fertilizer',
+        description: 'Potassium-rich fertilizer to enhance plant vigor and disease resistance.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 48.0,
+        cost: 32.0,
+        stock_quantity: 900,
+        sales_count: 180,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-13T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 166, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 167, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Calcium Nitrate',
+        description: 'Calcium nitrate fertilizer to improve cell wall strength and quality of crops.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 55.0,
+        cost: 37.0,
+        stock_quantity: 700,
+        sales_count: 160,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-14T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 168, weight_needed_per_batch: 45, unit_of_measure: 'kg' },
+          { supplier_product_key: 163, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Magnesium Sulfate',
+        description: 'Magnesium sulfate to aid in photosynthesis and plant nutrient absorption.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 40.0,
+        cost: 28.0,
+        stock_quantity: 600,
+        sales_count: 140,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-16T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 169, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 161, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 162, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 166, weight_needed_per_batch: 25, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Sulfur Fertilizer',
+        description: 'Sulfur fertilizer to enhance enzyme activity and protein synthesis in plants.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 35.0,
+        cost: 25.0,
+        stock_quantity: 800,
+        sales_count: 130,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-17T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 163, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 169, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 167, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 168, weight_needed_per_batch: 5, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Zinc Chelate',
+        description: 'Zinc chelate to prevent zinc deficiency and promote healthy growth.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 42.0,
+        cost: 29.0,
+        stock_quantity: 500,
+        sales_count: 120,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-18T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 125, weight_needed_per_batch: 10, unit_of_measure: 'kg' },
+          { supplier_product_key: 126, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 128, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Boron Fertilizer',
+        description: 'Boron fertilizer to improve cell wall formation and reproductive development.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 38.0,
+        cost: 26.0,
+        stock_quantity: 400,
+        sales_count: 100,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-19T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 152, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 160, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 173, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Iron Chelate',
+        description: 'Iron chelate to prevent iron chlorosis and ensure healthy green leaves.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 47.0,
+        cost: 33.0,
+        stock_quantity: 300,
+        sales_count: 110,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-20T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 123, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 124, weight_needed_per_batch: 7, unit_of_measure: 'kg' },
+          { supplier_product_key: 125, weight_needed_per_batch: 6, unit_of_measure: 'kg' },
+          { supplier_product_key: 126, weight_needed_per_batch: 4, unit_of_measure: 'kg' },
+          { supplier_product_key: 128, weight_needed_per_batch: 3, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Manganese Sulfate',
+        description: 'Manganese sulfate to aid in photosynthesis and nitrogen assimilation.',
+        sku: generate_unique_sku,
+        company_id: 3,
+        price: 36.0,
+        cost: 24.0,
+        stock_quantity: 350,
+        sales_count: 90,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-21T00:00:00Z',
+        category: 'Fertilizers and Soil Amendments',
+        ingredients: [
+          { supplier_product_key: 126, weight_needed_per_batch: 5, unit_of_measure: 'kg' },
+          { supplier_product_key: 163, weight_needed_per_batch: 3, unit_of_measure: 'kg' },
+          { supplier_product_key: 168, weight_needed_per_batch: 2, unit_of_measure: 'kg' },
+          { supplier_product_key: 170, weight_needed_per_batch: 2, unit_of_measure: 'kg' }
+        ]
+      }
+    ]
+  },
+  {
+    first_name: 'Emily',
+    last_name: 'Banister',
+    email: 'emily.banister@westernmilling.com',
+    phone_number: '555-456-7890',
+    company_name: 'Western Milling Grain Merchandising',
+    address_line1: '101 Grain Rd',
+    address_line2: '',
+    city: 'Hereford',
+    state: 'TX',
+    postal_code: '79045',
+    country: 'USA',
+    is_supplier: false,
+    is_customer: false,
+    is_internal: true,
+    products: [
+      {
+        name: 'Corn',
+        description: 'High-quality corn for various uses, including animal feed and food production.',
+        sku: generate_unique_sku,
+        company_id: 4,
+        price: 6.0,
+        cost: 4.0,
+        stock_quantity: 5000,
+        sales_count: 2000,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-10T00:00:00Z',
+        category: 'Grains',
+        ingredients: [
+          { supplier_product_key: 101, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 102, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 103, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 104, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 115, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 116, weight_needed_per_batch: 30, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Soybeans',
+        description: 'Premium soybeans suitable for animal feed and oil production.',
+        sku: generate_unique_sku,
+        company_id: 4,
+        price: 8.0,
+        cost: 5.0,
+        stock_quantity: 4000,
+        sales_count: 1500,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-11T00:00:00Z',
+        category: 'Grains',
+        ingredients: [
+          { supplier_product_key: 103, weight_needed_per_batch: 50, unit_of_measure: 'kg' },
+          { supplier_product_key: 120, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 121, weight_needed_per_batch: 1, unit_of_measure: 'kg' },
+          { supplier_product_key: 122, weight_needed_per_batch: 1.5, unit_of_measure: 'kg' },
+          { supplier_product_key: 130, weight_needed_per_batch: 25, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Wheat',
+        description: 'Top-grade wheat for baking, animal feed, and other food products.',
+        sku: generate_unique_sku,
+        company_id: 4,
+        price: 7.0,
+        cost: 4.5,
+        stock_quantity: 6000,
+        sales_count: 2500,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-12T00:00:00Z',
+        category: 'Grains',
+        ingredients: [
+          { supplier_product_key: 104, weight_needed_per_batch: 500, unit_of_measure: 'kg' },
+          { supplier_product_key: 102, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 101, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 108, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
+        ]
+      },
+      {
+        name: 'Barley',
+        description: 'High-quality barley for brewing, animal feed, and food production.',
+        sku: generate_unique_sku,
+        company_id: 4,
+        price: 5.5,
+        cost: 3.5,
+        stock_quantity: 3500,
+        sales_count: 1800,
+        product_type: 'wm_product',
+        last_sale_date: '2024-06-13T00:00:00Z',
+        category: 'Grains',
+        ingredients: [
+          { supplier_product_key: 104, weight_needed_per_batch: 20, unit_of_measure: 'kg' },
+          { supplier_product_key: 105, weight_needed_per_batch: 30, unit_of_measure: 'kg' },
+          { supplier_product_key: 107, weight_needed_per_batch: 15, unit_of_measure: 'kg' },
+          { supplier_product_key: 117, weight_needed_per_batch: 10, unit_of_measure: 'kg' }
+        ]
+      }
+    ]
+  }
+]
+
+# Method to generate random dates within the past and future 3 months
+def random_date_within_3_months
+  start_date = 3.months.ago.to_date
+  end_date = 3.months.from_now.to_date
+  rand(start_date..end_date)
+end
+
+internal_companies.each do |company_data|
+  company = Company.create!(
+    first_name: company_data[:first_name],
+    last_name: company_data[:last_name],
+    email: company_data[:email],
+    phone_number: company_data[:phone_number],
+    company_name: company_data[:company_name],
+    address_line1: company_data[:address_line1],
+    address_line2: company_data[:address_line2],
+    city: company_data[:city],
+    state: company_data[:state],
+    postal_code: company_data[:postal_code],
+    country: company_data[:country],
+    is_supplier: company_data[:is_supplier],
+    is_customer: company_data[:is_customer],
+    is_internal: company_data[:is_internal]
+  )
+
+  company_data[:products].each do |product_data|
+    product = company.products.create!(
+      name: product_data[:name],
+      description: product_data[:description],
+      sku: product_data[:sku],
+      price: product_data[:price],
+      cost: product_data[:cost],
+      stock_quantity: product_data[:stock_quantity],
+      sales_count: product_data[:sales_count],
+      product_type: product_data[:product_type],
+      last_sale_date: product_data[:last_sale_date]
+    )
+
+    product_data[:ingredients].each do |ingredient_data|
+      supplier_product = supplier_products_map[ingredient_data[:supplier_product_key]]
+      if supplier_product
+        product.ingredients.create!(
+          supplier_product_id: supplier_product.id,
+          weight_needed_per_batch: ingredient_data[:weight_needed_per_batch],
+          unit_of_measure: ingredient_data[:unit_of_measure]
+        )
+      else
+        puts "Warning: Supplier product with key #{ingredient_data[:supplier_product_key]} not found."
+      end
+    end
+
+    # Creating purchase orders for the company
+    20.times do
+      purchase_order = PurchaseOrder.create!(
+        company: company,
+        order_number: Faker::Number.unique.number(digits: 10),
+        order_date: random_date_within_3_months,
+        delivery_date: random_date_within_3_months,
+        total_amount: Faker::Commerce.price(range: 1000..10_000),
+        status: %w[Pending Shipped Delivered Cancelled].sample
+      )
+
+      # Associate random products with the purchase order
+      rand(1..5).times do
+        product = Product.order('RANDOM()').first # Select a random product
+        purchase_order.products << product
+      end
+    end
   end
 end
 

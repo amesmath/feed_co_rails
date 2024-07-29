@@ -78,8 +78,12 @@ body {
   width: 100%;
   padding: 20px 0;
   margin: 20px 0;
-  background: #ebebeb;
+  background: #f2f2f2;
   color: #000;
+}
+.low-stock_productItem:hover {
+  background-color: #ebebeb;
+  cursor: pointer;
 }
 
 .low-stock_productAmount {
@@ -115,7 +119,30 @@ body {
   font-weight: bold;
 }
 
+.tooltip {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: 10px;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  white-space: nowrap;
+}
 
+.product-item:hover .tooltip {
+  display: block;
+}
+
+.tooltip ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 
 @media (max-width: 1200px) {

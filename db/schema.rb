@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_29_011755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,7 +68,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "supplier_product_id"
     t.index ["product_id"], name: "index_ingredients_on_product_id"
+    t.index ["supplier_product_id"], name: "index_ingredients_on_supplier_product_id"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -163,7 +165,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
     t.string "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
     t.index ["company_id"], name: "index_purchase_orders_on_company_id"
+    t.index ["product_id"], name: "index_purchase_orders_on_product_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -262,12 +266,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_022514) do
   add_foreign_key "feedbacks", "products"
   add_foreign_key "forecasts", "products"
   add_foreign_key "ingredients", "products"
+  add_foreign_key "ingredients", "products", column: "supplier_product_id"
   add_foreign_key "inventories", "products"
   add_foreign_key "merchandisings", "products"
   add_foreign_key "pricings", "products"
   add_foreign_key "products", "companies"
   add_foreign_key "promotions", "products"
   add_foreign_key "purchase_orders", "companies"
+  add_foreign_key "purchase_orders", "products"
   add_foreign_key "sales", "companies"
   add_foreign_key "sales_details", "products"
   add_foreign_key "sales_details", "sales"

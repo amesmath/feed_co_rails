@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
     @low_stock_products = Product.where('company_id IN (?)', internal_company_ids)
                                  .order(:stock_quantity)
                                  .limit(3)
+                                 .includes(ingredients: { product: :company })
   end
 
   private
