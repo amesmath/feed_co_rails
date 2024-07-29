@@ -1,4 +1,4 @@
-<div>
+<div id="search-container">
     <input type="text" id="product-search" placeholder="Search for a product...">
     <button id="search-button">Search</button>
 </div>
@@ -33,7 +33,7 @@
                     if (data.length > 0) {
                         data.forEach(function (product) {
                             var listItem = `
-                        <div class="ingredient-item">
+                        <div class="ingredient-item-group">
                             <div class="ingredient-title">${product.name} Ingredients</div>
                             <div class="ingredients">
                         `;

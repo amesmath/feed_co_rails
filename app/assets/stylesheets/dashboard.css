@@ -141,15 +141,25 @@ body {
 
 .ingredients-results {
   overflow-y: scroll;
-  height: 500px;
+  height: 420px;
+  border: 1px solid lightgrey;
+  border-radius: 7px;
+  margin: 22px;
+}
+
+.ingredient-item-group {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
 }
 
 .ingredient-item {
   padding: 10px;
-  margin: 5px 0;
+  margin: 10px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  width: 83%;
 }
 
 .ingredient-title {
@@ -169,8 +179,9 @@ body {
 .ingredients {
   margin-left: 20px;
   padding-left: 10px;
-  border-left: 1px solid #ddd;
+  border: none;
   text-align: left;
+  margin-top: 22px;
 }
 
 #search-results {
@@ -187,6 +198,36 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+#search-button {
+  width: 80px;
+  padding: 11px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 10px;
+  background: #f2f2f2;
+}
+
+#search-button:hover {
+  background: #ebebeb;
+  cursor: pointer;
+}
+
+#search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-container input {
+  font-family: "Monaco", Arial, sans-serif;
+}
+
+#product-search {
+  width: 200px;
+  border: 1px solid lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+}
 
 @media (max-width: 1200px) {
   .widget {
