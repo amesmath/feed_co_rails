@@ -201,6 +201,7 @@ body {
   scrollbar-width: none;  /* Firefox */
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 #search-button {
